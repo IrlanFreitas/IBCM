@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  /* Cores principais */
+  --terra: #C1440E;
+  --terra-dark: #9A3309;
+  --terra-light: #F5EBE6;
+  --terra-mid: #E8C4B4;
+
+  --ocre: #B87820;
+  --ocre-light: #FBF2E2;
+
+  --musgo: #3A5C3B;
+  --musgo-dark: #2A4229;
+  --musgo-light: #E5EEE5;
+
+  --ink: #1C1917;
+  --ink-70: rgba(28, 25, 23, 0.70);
+  --ink-40: rgba(28, 25, 23, 0.40);
+  --ink-12: rgba(28, 25, 23, 0.12);
+  --ink-10: rgba(28, 25, 23, 0.10);
+  --ink-6: rgba(28, 25, 23, 0.06);
+
+  --creme: #F8F5F0;
+  --creme-dark: #EDE8DF;
+  --white: #FFFFFF;
+
+  /* Tipografia */
+  --font-garamond: 'EB Garamond', serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 40px;
+  --radius-full: 999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--creme);
+  color: var(--ink);
+  font-family: var(--font-jakarta);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
