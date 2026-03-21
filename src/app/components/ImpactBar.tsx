@@ -1,15 +1,19 @@
 import { motion } from 'motion/react'
-
-const stats = [
-  { number: '+38', label: 'Anos de atuação' },
-  { number: '+15k', label: 'Jovens aprendizes' },
-  { number: '+2.4k', label: 'Crianças atendidas' },
-  { number: '29', label: 'Casas de apoio' },
-]
+import { useOpcoes } from '../../hooks/useOpcoes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+const STATIC_STATS = [
+  { numero: '+38', label: 'Anos de atuação' },
+  { numero: '+15k', label: 'Jovens aprendizes' },
+  { numero: '+2.4k', label: 'Crianças atendidas' },
+  { numero: '29', label: 'Casas de apoio' },
+]
+
 export function ImpactBar() {
+  const { data: opcoes } = useOpcoes()
+  const stats = opcoes?.stats?.length ? opcoes.stats : STATIC_STATS
+
   return (
     <section style={{ background: 'var(--musgo)' }}>
       <div
@@ -37,7 +41,7 @@ export function ImpactBar() {
                 lineHeight: 1,
               }}
             >
-              {stat.number}
+              {stat.numero}
             </span>
             <span
               style={{

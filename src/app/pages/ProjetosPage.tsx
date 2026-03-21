@@ -1,16 +1,17 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from '../components/Eyebrow'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback'
+import { useProjetos } from '../../hooks/useProjetos'
+import type { WPProjeto } from '../../types/cms'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const projetos = [
+const STATIC_PROJETOS = [
   {
     titulo: 'HIV/AIDS — Prevenção e acolhimento',
     tag: 'Saúde',
     tagColor: 'var(--terra)',
     cor: 'var(--terra)',
-    corLight: 'var(--terra-light)',
     image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&auto=format&fit=crop&q=80',
     descricao:
       'Atendimento integral às pessoas vivendo com HIV/AIDS em Salvador. O programa cobre distribuição de medicamentos ARV, suporte emocional e psicológico, orientação jurídica e 29 casas de apoio espalhadas pela cidade.',
@@ -25,7 +26,6 @@ const projetos = [
     tag: 'Educação',
     tagColor: 'var(--musgo)',
     cor: 'var(--musgo)',
-    corLight: 'var(--musgo-light)',
     image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&auto=format&fit=crop&q=80',
     descricao:
       'Educação infantil de qualidade para crianças de 0 a 5 anos em situação de vulnerabilidade. Turno integral com alimentação, cuidados de saúde, estimulação e atividades pedagógicas voltadas ao desenvolvimento integral.',
@@ -40,7 +40,6 @@ const projetos = [
     tag: 'Diversidade',
     tagColor: 'var(--ocre)',
     cor: 'var(--ocre)',
-    corLight: 'var(--ocre-light)',
     image: 'https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=1200&auto=format&fit=crop&q=80',
     descricao:
       'Centro de referência LGBTQIA+ de Salvador com atendimento jurídico, psicológico, cultural e de geração de renda. O Casarão é espaço seguro para a comunidade e ponto de articulação de políticas públicas inclusivas.',
@@ -55,7 +54,6 @@ const projetos = [
     tag: 'Trabalho',
     tagColor: 'var(--ink)',
     cor: 'var(--ink)',
-    corLight: 'var(--ink-6)',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&auto=format&fit=crop&q=80',
     descricao:
       'Programa de qualificação profissional e inserção no mercado de trabalho para jovens de 14 a 22 anos. Parceria com empresas locais para garantir colocação profissional e renda às famílias.',
@@ -67,7 +65,26 @@ const projetos = [
   },
 ]
 
+type ProjetoCard = typeof STATIC_PROJETOS[0]
+
+function wpToCard(wp: WPProjeto): ProjetoCard {
+  const media = wp._embedded?.['wp:featuredmedia']?.[0]
+  const imagemUrl = wp.acf.imagem_principal?.url ?? media?.source_url ?? ''
+  return {
+    titulo: wp.title.rendered,
+    tag: wp.acf.tag,
+    tagColor: wp.acf.tag_color,
+    cor: wp.acf.tag_color,
+    image: imagemUrl,
+    descricao: wp.acf.descricao_completa || wp.acf.descricao_curta,
+    numeros: wp.acf.numeros ?? [],
+  }
+}
+
 export function ProjetosPage() {
+  const { data: wpProjetos } = useProjetos()
+  const projetos = wpProjetos?.filter((p) => p.acf.ativo).map(wpToCard) ?? STATIC_PROJETOS
+
   return (
     <>
       {/* Hero */}
@@ -183,43 +200,44 @@ export function ProjetosPage() {
                     color: 'var(--ink-70)',
                     marginBottom: '24px',
                   }}
-                >
-                  {projeto.descricao}
-                </p>
+                  dangerouslySetInnerHTML={{ __html: projeto.descricao }}
+                />
 
                 {/* Números */}
-                <div
-                  className="flex gap-6"
-                  style={{
-                    paddingTop: '20px',
-                    borderTop: '1px solid var(--ink-10)',
-                  }}
-                >
-                  {projeto.numeros.map((n) => (
-                    <div key={n.label} className="flex flex-col gap-1">
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-garamond)',
-                          fontSize: '26px',
-                          fontWeight: 500,
-                          color: projeto.cor,
-                        }}
-                      >
-                        {n.valor}
-                      </span>
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-jakarta)',
-                          fontSize: '11px',
-                          color: 'var(--ink-40)',
-                          letterSpacing: '0.5px',
-                        }}
-                      >
-                        {n.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                {projeto.numeros.length > 0 && (
+                  <div
+                    className="flex gap-6"
+                    style={{
+                      paddingTop: '20px',
+                      borderTop: '1px solid var(--ink-10)',
+                    }}
+                  >
+                    {projeto.numeros.map((n) => (
+                      <div key={n.label} className="flex flex-col gap-1">
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-garamond)',
+                            fontSize: '26px',
+                            fontWeight: 500,
+                            color: projeto.cor,
+                          }}
+                        >
+                          {n.valor}
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-jakarta)',
+                            fontSize: '11px',
+                            color: 'var(--ink-40)',
+                            letterSpacing: '0.5px',
+                          }}
+                        >
+                          {n.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}

@@ -1,9 +1,10 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from './Eyebrow'
+import { useDepoimentos } from '../../hooks/useDepoimentos'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const depoimentos = [
+const STATIC_DEPOIMENTOS = [
   {
     texto:
       'O IBCM foi o único lugar onde fui tratada como ser humano num momento em que o mundo parecia ter fechado as portas. Eles me deram medicação, moradia e, mais do que tudo, devolveram minha dignidade.',
@@ -11,7 +12,6 @@ const depoimentos = [
     papel: 'Beneficiária — usuária há 12 anos',
     inicial: 'M',
     cor: 'var(--terra)',
-    corLight: 'var(--terra-light)',
   },
   {
     texto:
@@ -20,11 +20,20 @@ const depoimentos = [
     papel: 'Voluntário — 5 anos de dedicação',
     inicial: 'R',
     cor: 'var(--musgo)',
-    corLight: 'var(--musgo-light)',
   },
 ]
 
 export function Depoimentos() {
+  const { data: wpDepoimentos } = useDepoimentos()
+
+  const depoimentos = wpDepoimentos?.filter((d) => d.acf.ativo).map((d) => ({
+    texto: d.acf.texto,
+    nome: d.acf.nome,
+    papel: d.acf.papel,
+    inicial: d.acf.nome.charAt(0).toUpperCase(),
+    cor: d.acf.cor,
+  })) ?? STATIC_DEPOIMENTOS
+
   return (
     <section style={{ background: 'var(--ink)', padding: 'clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px)' }}>
       <motion.div
@@ -64,7 +73,6 @@ export function Depoimentos() {
               padding: 'clamp(24px, 3vw, 36px)',
             }}
           >
-            {/* Aspas decorativas */}
             <div
               style={{
                 fontFamily: 'var(--font-garamond)',

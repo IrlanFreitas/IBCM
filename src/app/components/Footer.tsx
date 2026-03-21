@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { useOpcoes } from '../../hooks/useOpcoes'
 
 const colunas = [
   {
@@ -32,6 +33,28 @@ const colunas = [
 ]
 
 export function Footer() {
+  const { data: opcoes } = useOpcoes()
+
+  const endereco = opcoes?.endereco || 'Salvador, Bahia'
+  const email = opcoes?.email || 'contato@ibcm.org.br'
+  const telefone = opcoes?.telefone || '(71) 3000-0000'
+  const cnpj = opcoes?.cnpj || '00.000.000/0001-00'
+  const instagramUrl = opcoes?.instagram_url || '#'
+  const facebookUrl = opcoes?.facebook_url || '#'
+  const linkedinUrl = opcoes?.linkedin_url || '#'
+
+  const redesSociais = [
+    { Icon: Instagram, label: 'Instagram', href: instagramUrl },
+    { Icon: Facebook, label: 'Facebook', href: facebookUrl },
+    { Icon: Linkedin, label: 'LinkedIn', href: linkedinUrl },
+  ]
+
+  const contatos = [
+    { Icon: MapPin, text: endereco },
+    { Icon: Mail, text: email },
+    { Icon: Phone, text: telefone },
+  ]
+
   return (
     <footer style={{ background: 'var(--ink)', padding: 'clamp(48px, 7vw, 80px) clamp(16px, 5vw, 60px) 0' }}>
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 pb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -65,15 +88,13 @@ export function Footer() {
 
           {/* Redes sociais */}
           <div className="flex items-center gap-4">
-            {[
-              { Icon: Instagram, label: 'Instagram' },
-              { Icon: Facebook, label: 'Facebook' },
-              { Icon: Linkedin, label: 'LinkedIn' },
-            ].map(({ Icon, label }) => (
+            {redesSociais.map(({ Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -153,11 +174,7 @@ export function Footer() {
             Contato
           </span>
 
-          {[
-            { Icon: MapPin, text: 'Salvador, Bahia' },
-            { Icon: Mail, text: 'contato@ibcm.org.br' },
-            { Icon: Phone, text: '(71) 3000-0000' },
-          ].map(({ Icon, text }) => (
+          {contatos.map(({ Icon, text }) => (
             <div key={text} className="flex items-center gap-3">
               <Icon size={14} color="var(--terra)" style={{ flexShrink: 0 }} />
               <span style={{ fontFamily: 'var(--font-jakarta)', fontSize: '13px', color: 'rgba(255,255,255,0.55)' }}>
@@ -174,7 +191,7 @@ export function Footer() {
         style={{ padding: '20px 0' }}
       >
         <span style={{ fontFamily: 'var(--font-jakarta)', fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
-          © {new Date().getFullYear()} IBCM — Instituto Beneficente Conceição Macedo · CNPJ 00.000.000/0001-00
+          © {new Date().getFullYear()} IBCM — Instituto Beneficente Conceição Macedo · CNPJ {cnpj}
         </span>
         <span style={{ fontFamily: 'var(--font-jakarta)', fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
           Feito com cuidado em Salvador, Bahia

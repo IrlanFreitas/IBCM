@@ -1,61 +1,41 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from '../components/Eyebrow'
+import { useTimeline } from '../../hooks/useTimeline'
+import { useOpcoes } from '../../hooks/useOpcoes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const timeline = [
-  {
-    ano: 1986,
-    titulo: 'Fundação do IBCM',
-    descricao:
-      'Maria Conceição Macedo funda o Instituto em Salvador com a missão de acolher pessoas vivendo com HIV/AIDS num período de enorme estigma social.',
-    cor: 'var(--terra)',
-  },
-  {
-    ano: 1988,
-    titulo: 'Primeira casa de apoio',
-    descricao:
-      'Abertura da primeira casa de apoio, oferecendo moradia temporária e cuidados paliativos a pacientes sem rede familiar.',
-    cor: 'var(--ocre)',
-  },
-  {
-    ano: 1992,
-    titulo: 'Programa Jovem Aprendiz',
-    descricao:
-      'Início do programa de formação profissional para adolescentes em vulnerabilidade social, que já formou mais de 15.000 jovens.',
-    cor: 'var(--musgo)',
-  },
-  {
-    ano: 1995,
-    titulo: 'Creche IBCM',
-    descricao:
-      'Inauguração da creche comunitária que atende crianças de 0 a 5 anos em turno integral, priorizando filhos de pessoas atendidas pelo Instituto.',
-    cor: 'var(--terra)',
-  },
-  {
-    ano: 2003,
-    titulo: 'CPDD — Casarão da Diversidade',
-    descricao:
-      'Criação do Centro de Promoção da Diversidade e Direitos Humanos, referência LGBTQIA+ em Salvador com atendimento jurídico, psicológico e cultural.',
-    cor: 'var(--ocre)',
-  },
-  {
-    ano: 2010,
-    titulo: 'Ronda Noturna',
-    descricao:
-      'Lançamento do programa de abordagem noturna nas ruas de Salvador, levando saúde, alimentação e cuidados às pessoas em situação de rua.',
-    cor: 'var(--musgo)',
-  },
-  {
-    ano: 2024,
-    titulo: '38 anos de história',
-    descricao:
-      'O IBCM celebra quatro décadas de resistência e cuidado, com 29 casas de apoio ativas, mais de 2.400 crianças atendidas e impacto contínuo.',
-    cor: 'var(--terra)',
-  },
+const STATIC_TIMELINE = [
+  { ano: 1986, titulo: 'Fundação do IBCM', descricao: 'Maria Conceição Macedo funda o Instituto em Salvador com a missão de acolher pessoas vivendo com HIV/AIDS num período de enorme estigma social.', cor: 'var(--terra)' },
+  { ano: 1988, titulo: 'Primeira casa de apoio', descricao: 'Abertura da primeira casa de apoio, oferecendo moradia temporária e cuidados paliativos a pacientes sem rede familiar.', cor: 'var(--ocre)' },
+  { ano: 1992, titulo: 'Programa Jovem Aprendiz', descricao: 'Início do programa de formação profissional para adolescentes em vulnerabilidade social, que já formou mais de 15.000 jovens.', cor: 'var(--musgo)' },
+  { ano: 1995, titulo: 'Creche IBCM', descricao: 'Inauguração da creche comunitária que atende crianças de 0 a 5 anos em turno integral, priorizando filhos de pessoas atendidas pelo Instituto.', cor: 'var(--terra)' },
+  { ano: 2003, titulo: 'CPDD — Casarão da Diversidade', descricao: 'Criação do Centro de Promoção da Diversidade e Direitos Humanos, referência LGBTQIA+ em Salvador com atendimento jurídico, psicológico e cultural.', cor: 'var(--ocre)' },
+  { ano: 2010, titulo: 'Ronda Noturna', descricao: 'Lançamento do programa de abordagem noturna nas ruas de Salvador, levando saúde, alimentação e cuidados às pessoas em situação de rua.', cor: 'var(--musgo)' },
+  { ano: 2024, titulo: '38 anos de história', descricao: 'O IBCM celebra quatro décadas de resistência e cuidado, com 29 casas de apoio ativas, mais de 2.400 crianças atendidas e impacto contínuo.', cor: 'var(--terra)' },
 ]
 
+const STATIC_MVV = {
+  missao: 'Promover o bem-estar integral de pessoas em situação de vulnerabilidade, com foco em saúde, educação, habitação e defesa de direitos.',
+  visao: 'Ser referência nacional em acolhimento humanizado e políticas de inclusão para populações historicamente marginalizadas.',
+  valores: 'Dignidade humana · Solidariedade · Transparência · Resistência · Cuidado integral · Defesa da diversidade',
+}
+
 export function QuemSomosPage() {
+  const { data: wpTimeline } = useTimeline()
+  const { data: opcoes } = useOpcoes()
+
+  const timeline = wpTimeline?.map((ev) => ({
+    ano: ev.acf.ano,
+    titulo: ev.title.rendered,
+    descricao: ev.acf.descricao,
+    cor: ev.acf.cor,
+  })) ?? STATIC_TIMELINE
+
+  const missao = opcoes?.missao || STATIC_MVV.missao
+  const visao = opcoes?.visao || STATIC_MVV.visao
+  const valores = opcoes?.valores || STATIC_MVV.valores
+
   return (
     <>
       {/* Hero interno */}
@@ -108,24 +88,9 @@ export function QuemSomosPage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            {
-              titulo: 'Missão',
-              cor: 'var(--terra)',
-              texto:
-                'Promover o bem-estar integral de pessoas em situação de vulnerabilidade, com foco em saúde, educação, habitação e defesa de direitos.',
-            },
-            {
-              titulo: 'Visão',
-              cor: 'var(--musgo)',
-              texto:
-                'Ser referência nacional em acolhimento humanizado e políticas de inclusão para populações historicamente marginalizadas.',
-            },
-            {
-              titulo: 'Valores',
-              cor: 'var(--ocre)',
-              texto:
-                'Dignidade humana · Solidariedade · Transparência · Resistência · Cuidado integral · Defesa da diversidade',
-            },
+            { titulo: 'Missão', cor: 'var(--terra)', texto: missao },
+            { titulo: 'Visão', cor: 'var(--musgo)', texto: visao },
+            { titulo: 'Valores', cor: 'var(--ocre)', texto: valores },
           ].map((item, i) => (
             <motion.div
               key={item.titulo}
@@ -278,7 +243,6 @@ export function QuemSomosPage() {
                       gap: 0,
                     }}
                   >
-                    {/* Linha antes */}
                     <div
                       style={{
                         width: '100%',
@@ -290,7 +254,6 @@ export function QuemSomosPage() {
                       }}
                     />
 
-                    {/* Círculo do ano */}
                     <div
                       style={{
                         width: '52px',

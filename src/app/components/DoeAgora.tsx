@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { Heart, Shield, Lock, RefreshCw } from 'lucide-react'
 import { Eyebrow } from './Eyebrow'
+import { useOpcoes } from '../../hooks/useOpcoes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const valores = [
+const STATIC_VALORES = [
   {
     valor: 30,
     impacto: [
@@ -41,9 +42,17 @@ const valores = [
 ]
 
 export function DoeAgora() {
+  const { data: opcoes } = useOpcoes()
   const [mensal, setMensal] = useState(true)
   const [valorSelecionado, setValorSelecionado] = useState(50)
   const [valorCustom, setValorCustom] = useState('')
+
+  const valores = opcoes?.valores_doacao?.length
+    ? opcoes.valores_doacao.map((v) => ({
+        valor: v.valor,
+        impacto: v.impactos.map((i) => i.texto),
+      }))
+    : STATIC_VALORES
 
   const valorAtual = valorSelecionado || Number(valorCustom) || 50
   const itemSelecionado = valores.find((v) => v.valor === valorSelecionado)
@@ -88,7 +97,6 @@ export function DoeAgora() {
             IBCM. Transparência total: publicamos relatórios mensais de prestação de contas.
           </p>
 
-          {/* Info box mensal */}
           <div
             style={{
               background: 'var(--musgo-light)',

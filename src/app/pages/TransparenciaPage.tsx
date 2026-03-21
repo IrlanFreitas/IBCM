@@ -1,17 +1,19 @@
 import { motion } from 'motion/react'
 import { FileText, Download, CheckCircle, Award } from 'lucide-react'
 import { Eyebrow } from '../components/Eyebrow'
+import { useOpcoes } from '../../hooks/useOpcoes'
+import { useRelatorios } from '../../hooks/useRelatorios'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const relatorios = [
-  { ano: 2023, titulo: 'Relatório Anual 2023', tipo: 'PDF', tamanho: '2.4 MB' },
-  { ano: 2022, titulo: 'Relatório Anual 2022', tipo: 'PDF', tamanho: '2.1 MB' },
-  { ano: 2021, titulo: 'Relatório Anual 2021', tipo: 'PDF', tamanho: '1.8 MB' },
-  { ano: 2020, titulo: 'Relatório Anual 2020', tipo: 'PDF', tamanho: '1.6 MB' },
+const STATIC_RELATORIOS = [
+  { ano: 2023, titulo: 'Relatório Anual 2023', tipo: 'PDF', tamanho: '2.4 MB', url: null as string | null },
+  { ano: 2022, titulo: 'Relatório Anual 2022', tipo: 'PDF', tamanho: '2.1 MB', url: null as string | null },
+  { ano: 2021, titulo: 'Relatório Anual 2021', tipo: 'PDF', tamanho: '1.8 MB', url: null as string | null },
+  { ano: 2020, titulo: 'Relatório Anual 2020', tipo: 'PDF', tamanho: '1.6 MB', url: null as string | null },
 ]
 
-const certificacoes = [
+const STATIC_CERTIFICACOES = [
   { titulo: 'OSCIP', descricao: 'Organização da Sociedade Civil de Interesse Público', cor: 'var(--terra)' },
   { titulo: 'CNAS', descricao: 'Conselho Nacional de Assistência Social — Certificado', cor: 'var(--musgo)' },
   { titulo: 'ISO 9001', descricao: 'Gestão da qualidade em processos assistenciais', cor: 'var(--ocre)' },
@@ -19,6 +21,21 @@ const certificacoes = [
 ]
 
 export function TransparenciaPage() {
+  const { data: opcoes } = useOpcoes()
+  const { data: wpRelatorios } = useRelatorios()
+
+  const certificacoes = opcoes?.certificacoes?.length
+    ? opcoes.certificacoes.map((c) => ({ titulo: c.nome, descricao: c.descricao, cor: c.cor }))
+    : STATIC_CERTIFICACOES
+
+  const relatorios = wpRelatorios?.map((r) => ({
+    ano: r.acf.ano,
+    titulo: r.title.rendered,
+    tipo: r.acf.tipo.toUpperCase(),
+    tamanho: r.acf.tamanho,
+    url: r.acf.arquivo_pdf?.url ?? null,
+  })) ?? STATIC_RELATORIOS
+
   return (
     <>
       {/* Hero */}
@@ -215,28 +232,56 @@ export function TransparenciaPage() {
                     Auditado
                   </span>
                 </div>
-                <button
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontFamily: 'var(--font-jakarta)',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    color: 'var(--terra)',
-                    background: 'var(--terra-light)',
-                    border: 'none',
-                    borderRadius: 'var(--radius-full)',
-                    padding: '8px 16px',
-                    cursor: 'pointer',
-                    transition: 'background 200ms',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--terra-mid)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--terra-light)')}
-                >
-                  <Download size={14} />
-                  Baixar
-                </button>
+                {rel.url ? (
+                  <a
+                    href={rel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontFamily: 'var(--font-jakarta)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--terra)',
+                      background: 'var(--terra-light)',
+                      border: 'none',
+                      borderRadius: 'var(--radius-full)',
+                      padding: '8px 16px',
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      transition: 'background 200ms',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--terra-mid)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--terra-light)')}
+                  >
+                    <Download size={14} />
+                    Baixar
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontFamily: 'var(--font-jakarta)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--ink-40)',
+                      background: 'var(--ink-6)',
+                      border: 'none',
+                      borderRadius: 'var(--radius-full)',
+                      padding: '8px 16px',
+                      cursor: 'not-allowed',
+                    }}
+                  >
+                    <Download size={14} />
+                    Baixar
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}

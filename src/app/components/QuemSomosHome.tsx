@@ -2,10 +2,17 @@ import { motion } from 'motion/react'
 import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from './Eyebrow'
+import { useOpcoes } from '../../hooks/useOpcoes'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+const STATIC_TEXTO =
+  'Em 1986, Maria Conceição Macedo fundou o IBCM com um propósito simples e urgente: acolher quem a sociedade rejeitava. Numa época em que o estigma do HIV/AIDS isolava famílias inteiras, o Instituto abriu as portas para oferecer dignidade, cuidado e voz a quem mais precisava.'
+
 export function QuemSomosHome() {
+  const { data: opcoes } = useOpcoes()
+  const texto = opcoes?.texto_intro || STATIC_TEXTO
+
   return (
     <section style={{ background: 'var(--white)', padding: 'clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px)' }}>
       <motion.div
@@ -40,10 +47,7 @@ export function QuemSomosHome() {
             marginBottom: '28px',
           }}
         >
-          Em 1986, Maria Conceição Macedo fundou o IBCM com um propósito simples e urgente:
-          acolher quem a sociedade rejeitava. Numa época em que o estigma do HIV/AIDS isolava
-          famílias inteiras, o Instituto abriu as portas para oferecer dignidade, cuidado e voz
-          a quem mais precisava.
+          {texto}
         </p>
 
         <Link

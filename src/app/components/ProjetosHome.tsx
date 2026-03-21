@@ -4,10 +4,12 @@ import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from './Eyebrow'
 import { ImageWithFallback } from './figma/ImageWithFallback'
+import { useProjetos } from '../../hooks/useProjetos'
+import type { WPProjeto } from '../../types/cms'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-const projetos = [
+const STATIC_PROJETOS = [
   {
     id: 1,
     titulo: 'HIV/AIDS — Prevenção e acolhimento',
@@ -16,7 +18,7 @@ const projetos = [
     gradient: 'linear-gradient(90deg, var(--terra) 0%, var(--terra-mid) 100%)',
     descricao:
       'Atendimento integral às pessoas vivendo com HIV/AIDS: medicação, suporte emocional, orientação jurídica e casas de apoio.',
-    badge: null,
+    badge: null as string | null,
     image:
       'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&auto=format&fit=crop&q=80',
   },
@@ -28,7 +30,7 @@ const projetos = [
     gradient: 'linear-gradient(90deg, var(--musgo) 0%, var(--musgo-light) 100%)',
     descricao:
       'Educação infantil de qualidade para crianças em situação de vulnerabilidade, com cuidado integral e estímulo ao desenvolvimento.',
-    badge: '88 crianças · turno integral',
+    badge: '88 crianças · turno integral' as string | null,
     image:
       'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80',
   },
@@ -40,7 +42,7 @@ const projetos = [
     gradient: 'linear-gradient(90deg, var(--ocre) 0%, var(--ocre-light) 100%)',
     descricao:
       'Centro de referência LGBTQIA+ que oferece suporte jurídico, psicológico, cultural e de geração de renda.',
-    badge: null,
+    badge: null as string | null,
     image:
       'https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=800&auto=format&fit=crop&q=80',
   },
@@ -52,13 +54,30 @@ const projetos = [
     gradient: 'linear-gradient(90deg, var(--ink) 0%, var(--ink-40) 100%)',
     descricao:
       'Programa de formação profissional e inserção no mercado de trabalho para jovens de 14 a 22 anos em vulnerabilidade social.',
-    badge: '+15.000 formados',
+    badge: '+15.000 formados' as string | null,
     image:
       'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&auto=format&fit=crop&q=80',
   },
 ]
 
-function ProjetoCard({ projeto, index }: { projeto: (typeof projetos)[0]; index: number }) {
+type CardData = typeof STATIC_PROJETOS[0]
+
+function wpToCard(wp: WPProjeto): CardData {
+  const media = wp._embedded?.['wp:featuredmedia']?.[0]
+  const imagemUrl = wp.acf.imagem_principal?.url ?? media?.source_url ?? ''
+  return {
+    id: wp.id,
+    titulo: wp.title.rendered,
+    tag: wp.acf.tag,
+    tagColor: wp.acf.tag_color,
+    gradient: wp.acf.gradient,
+    descricao: wp.acf.descricao_curta,
+    badge: wp.acf.badge ?? null,
+    image: imagemUrl,
+  }
+}
+
+function ProjetoCard({ projeto, index }: { projeto: CardData; index: number }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -81,7 +100,6 @@ function ProjetoCard({ projeto, index }: { projeto: (typeof projetos)[0]; index:
         cursor: 'pointer',
       }}
     >
-      {/* Imagem */}
       <div style={{ aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
         <ImageWithFallback
           src={projeto.image}
@@ -94,10 +112,8 @@ function ProjetoCard({ projeto, index }: { projeto: (typeof projetos)[0]; index:
         />
       </div>
 
-      {/* Faixa colorida */}
       <div style={{ height: '3px', background: projeto.gradient, flexShrink: 0 }} />
 
-      {/* Conteúdo */}
       <div
         className="flex flex-col flex-1"
         style={{ padding: 'clamp(16px, 2vw, 24px)' }}
@@ -162,6 +178,10 @@ function ProjetoCard({ projeto, index }: { projeto: (typeof projetos)[0]; index:
 }
 
 export function ProjetosHome() {
+  const { data: wpProjetos } = useProjetos()
+  const projetos = wpProjetos?.filter((p) => p.acf.ativo).slice(0, 4).map(wpToCard)
+    ?? STATIC_PROJETOS
+
   return (
     <section style={{ background: 'var(--creme)', padding: 'clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px)' }}>
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
