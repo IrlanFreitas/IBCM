@@ -4,8 +4,9 @@ import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from './Eyebrow'
 import { ImageWithFallback } from './figma/ImageWithFallback'
-import { useProjetos } from '../../hooks/useProjetos'
-import type { WPProjeto } from '../../types/cms'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import { useProjetos } from '../../hooks/useProjetos'
+// import type { WPProjeto } from '../../types/cms'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -18,7 +19,7 @@ const STATIC_PROJETOS = [
     gradient: 'linear-gradient(90deg, var(--terra) 0%, var(--terra-mid) 100%)',
     descricao:
       'Atendimento integral às pessoas vivendo com HIV/AIDS: medicação, suporte emocional, orientação jurídica e casas de apoio.',
-    badge: null as string | null,
+    // badge: null as string | null,
     image:
       'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&auto=format&fit=crop&q=80',
   },
@@ -62,20 +63,20 @@ const STATIC_PROJETOS = [
 
 type CardData = typeof STATIC_PROJETOS[0]
 
-function wpToCard(wp: WPProjeto): CardData {
-  const media = wp._embedded?.['wp:featuredmedia']?.[0]
-  const imagemUrl = wp.acf.imagem_principal?.url ?? media?.source_url ?? ''
-  return {
-    id: wp.id,
-    titulo: wp.title.rendered,
-    tag: wp.acf.tag,
-    tagColor: wp.acf.tag_color,
-    gradient: wp.acf.gradient,
-    descricao: wp.acf.descricao_curta,
-    badge: wp.acf.badge ?? null,
-    image: imagemUrl,
-  }
-}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// function wpToCard(wp: WPProjeto): CardData {
+//   const media = wp._embedded?.['wp:featuredmedia']?.[0]
+//   const imagemUrl = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
+//   return {
+//     id: wp.id,
+//     titulo: wp.title.rendered,
+//     tag: wp.acf.tag,
+//     tagColor: wp.acf.tagcolor,
+//     // numeros: wp.acf.numeros,
+//     descricao: wp.acf.descricaocurta,
+//     image: imagemUrl,
+//   }
+// }
 
 function ProjetoCard({ projeto, index }: { projeto: CardData; index: number }) {
   const [hovered, setHovered] = useState(false)
@@ -178,9 +179,10 @@ function ProjetoCard({ projeto, index }: { projeto: CardData; index: number }) {
 }
 
 export function ProjetosHome() {
-  const { data: wpProjetos } = useProjetos()
-  const projetos = wpProjetos?.filter((p) => p.acf.ativo).slice(0, 4).map(wpToCard)
-    ?? STATIC_PROJETOS
+  // const { data: wpProjetos } = useProjetos()
+  // const projetos = wpProjetos?.filter((p) => p.acf.ativo).slice(0, 4).map(wpToCard)
+  //   ?? STATIC_PROJETOS
+  const projetos = STATIC_PROJETOS
 
   return (
     <section style={{ background: 'var(--creme)', padding: 'clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px)' }}>

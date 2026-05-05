@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchProjetos } from '../services/projetos'
 
-export function useProjetosFind(slug: string) {
+export function useProjetosFind() {
   return useQuery({
     queryKey: ['projetos'],
     

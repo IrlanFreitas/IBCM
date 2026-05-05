@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { Eyebrow } from '../components/Eyebrow'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback'
 import { useProjetos } from '../../hooks/useProjetos'
-import type { WPProjeto } from '../../types/cms'
+// import type { WPProjeto } from '../../types/cms'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -65,25 +65,22 @@ const STATIC_PROJETOS = [
   },
 ]
 
-type ProjetoCard = typeof STATIC_PROJETOS[0]
+// type ProjetoCard = typeof STATIC_PROJETOS[0]
 
-function wpToCard(wp: WPProjeto): ProjetoCard {
-  const media = wp._embedded?.['wp:featuredmedia']?.[0]
-  const imagemUrl = wp.acf.imagemprincipal ?? media?.source_url ?? ''
+// function wpToCard(wp: WPProjeto): ProjetoCard {
+//   const media = wp._embedded?.['wp:featuredmedia']?.[0]
+//   const imagemUrl = wp.acf.imagemprincipal ?? media?.source_url ?? ''
 
-  stringCsvToObject
-  wp.acf.oferecido
-
-  return {
-    titulo: wp.title.rendered,
-    tag: wp.acf.tag,
-    tagColor: wp.acf.tagcolor,
-    cor: wp.acf.tagcolor,
-    image: imagemUrl,
-    descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
-    numeros: wp.acf.numeros ?? [],
-  }
-}
+//   return {
+//     titulo: wp.title.rendered,
+//     tag: wp.acf.tag,
+//     tagColor: wp.acf.tagcolor,
+//     cor: wp.acf.tagcolor,
+//     // image: imagemUrl,
+//     descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
+//     // numeros: wp.acf.numeros ?? [],
+//   }
+// }
 
 export function ProjetosPage() {
   const { data: wpProjetos } = useProjetos()
