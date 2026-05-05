@@ -27,7 +27,8 @@
   --white: #FFFFFF;
 
   /* Tipografia */
-  --font-garamond: 'EB Garamond', serif;
+  --font-garamond: "Quicksand", sans-serif;
+  /* font-family: neulis-cursive, sans-serif; */
   --font-jakarta: 'Plus Jakarta Sans', sans-serif;
 
   /* Border radius */

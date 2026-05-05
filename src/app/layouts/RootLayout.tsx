@@ -6,7 +6,7 @@ export function RootLayout() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navigation />
-      <main style={{ flex: 1, paddingTop: '68px' }}>
+      <main style={{ flex: 1, paddingTop: '100px' }}>
         <Outlet />
       </main>
       <Footer />

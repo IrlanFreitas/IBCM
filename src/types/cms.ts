@@ -3,15 +3,12 @@ export interface WPProjeto {
   title: { rendered: string }
   acf: {
     tag: string
-    tag_color: string
-    gradient: string
-    descricao_curta: string
-    descricao_completa: string
-    imagem_principal: { url: string; alt: string } | null
-    numeros: Array<{ valor: string; label: string }>
-    badge?: string
-    ordem: number
-    ativo: boolean
+    tagcolor: string
+    descricaocurta: string
+    descricaocompleta: string
+    imagemprincipal: { url: string; alt: string } | null
+    numeros: string
+    oferecido: string
   }
   _embedded?: {
     'wp:featuredmedia'?: Array<{ source_url: string; alt_text: string }>

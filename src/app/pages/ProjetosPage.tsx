@@ -69,21 +69,29 @@ type ProjetoCard = typeof STATIC_PROJETOS[0]
 
 function wpToCard(wp: WPProjeto): ProjetoCard {
   const media = wp._embedded?.['wp:featuredmedia']?.[0]
-  const imagemUrl = wp.acf.imagem_principal?.url ?? media?.source_url ?? ''
+  const imagemUrl = wp.acf.imagemprincipal ?? media?.source_url ?? ''
+
+  stringCsvToObject
+  wp.acf.oferecido
+
   return {
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
-    tagColor: wp.acf.tag_color,
-    cor: wp.acf.tag_color,
+    tagColor: wp.acf.tagcolor,
+    cor: wp.acf.tagcolor,
     image: imagemUrl,
-    descricao: wp.acf.descricao_completa || wp.acf.descricao_curta,
+    descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
     numeros: wp.acf.numeros ?? [],
   }
 }
 
 export function ProjetosPage() {
   const { data: wpProjetos } = useProjetos()
-  const projetos = wpProjetos?.filter((p) => p.acf.ativo).map(wpToCard) ?? STATIC_PROJETOS
+  // const projetos = wpProjetos?.map(wpToCard) ?? STATIC_PROJETOS      
+  const projetos = STATIC_PROJETOS
+  // const projetos = wpProjetos
+
+  console.log(wpProjetos)
 
   return (
     <>
