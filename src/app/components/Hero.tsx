@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -52,7 +52,7 @@ export function Hero() {
           paddingBottom: "clamp(40px, 6vw, 88px)",
         }}
       >
-        {/* Badge */}
+        {/* Badge
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export function Hero() {
           >
             Desde 1986
           </span>
-        </motion.div>
+        </motion.div> */}
 
         {/* Eyebrow */}
         <motion.div
@@ -89,7 +89,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.1 }}
         >
-          <Eyebrow color="var(--ocre)">Salvador, Bahia</Eyebrow>
+          <Eyebrow color="var(--ocre)">Desde 1986 Salvador, Bahia</Eyebrow>
         </motion.div>
 
         {/* Título */}
@@ -107,7 +107,8 @@ export function Hero() {
             marginBottom: "20px",
           }}
         >
-          40 anos cuidando de{" "}
+          38 anos <br />
+          cuidando de{" "} <br />
           <span style={{ color: "var(--terra)" }}>quem precisa</span>
         </motion.h1>
 
@@ -125,9 +126,7 @@ export function Hero() {
             marginBottom: "32px",
           }}
         >
-          O IBCM oferece acolhimento, saúde, educação e defesa de direitos para
-          pessoas que vivem com HIV/AIDS e comunidades historicamente
-          marginalizadas em Salvador.
+          Acolhimento, moradia, educação e defesa de direitos para pessoas que vivem com HIV/AIDS e grupos historicamente marginalizados.
         </motion.p>
 
         {/* CTAs */}
@@ -160,8 +159,7 @@ export function Hero() {
               (e.currentTarget.style.background = "var(--terra)")
             }
           >
-            <Heart size={16} />
-            Doe agora
+            Faça uma doação
           </Link>
 
           <Link
@@ -187,7 +185,7 @@ export function Hero() {
               (e.currentTarget.style.background = "rgba(255,255,255,0.12)")
             }
           >
-            Nossa história
+            Conheça o IBCM
             <ArrowRight size={16} />
           </Link>
         </motion.div>
