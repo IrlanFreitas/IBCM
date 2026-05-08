@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap');
+
+:global(:root) {
+  --bg: #f7f5f0;
+  --surface: #efefea;
+  --border: #ddddd5;
+  --text-primary: #1a1a18;
+  --text-secondary: #888880;
+  --accent: #1a1a18;
+  --card-bg: #ffffff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --gap: 20px;
+  --card-width: 180px;
+  --card-height: 88px;
+  --duration: 32s;
+}
+
+.section {
+  width: 100%;
+  overflow: hidden;
+  padding: 50px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 52px;
+  padding: 0 24px;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+.sectionLabel::before,
+.sectionLabel::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--border);
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--terra);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.sectionTitle .highlight {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.sectionSubtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* ── Carousel wrapper ─────────────────── */
+
+.carouselOuter {
+  position: relative;
+  width: 100%;
+}
+
+.carouselOuter::before,
+.carouselOuter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carouselOuter::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+
+.carouselOuter::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+}
+
+.carouselTrackWrapper {
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: scroll var(--duration) linear infinite;
+}
+
+.carouselTrack:hover {
+  animation-play-state: paused;
+}
+
+.carouselTrack.reverse {
+  animation-direction: reverse;
+  --duration: 38s;
+  margin-top: var(--gap);
+}
+
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50%)); }
+}
+
+/* ── Logo cards ───────────────────────── */
+
+.logoCard {
+  flex-shrink: 0;
+  width: var(--card-width);
+  height: var(--card-height);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: default;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  box-shadow: var(--shadow);
+  user-select: none;
+}
+
+.logoCard:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.logoAbbr {
+  font-family: 'Syne Mono', monospace;
+  font-size: 22px;
+  color: var(--text-primary);
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.logoName {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.logoCard:hover .logoAbbr {
+  color: #000;
+}
+
+.logoCard:hover .logoName {
+  color: var(--text-primary);
+}
+
+/* ── Stats bar below carousel ─────────── */
+
+.statsBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 56px;
+  padding: 0 24px;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+  display: block;
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  display: block;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+@media (max-width: 480px) {
+  :global(:root) {
+    --card-width: 148px;
+    --card-height: 76px;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  .statsBar {
+    gap: 28px;
+  }
+
+  .carouselOuter::before,
+  .carouselOuter::after {
+    width: 60px;
+  }
+}
