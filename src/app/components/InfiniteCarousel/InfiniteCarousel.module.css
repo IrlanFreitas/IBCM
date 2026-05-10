@@ -19,6 +19,7 @@
   width: 100%;
   overflow: hidden;
   padding: 50px 0;
+  background-color: #fff;
 }
 
 .sectionHeader {
@@ -133,7 +134,7 @@
   flex-shrink: 0;
   width: var(--card-width);
   height: var(--card-height);
-  background: var(--card-bg);
+  background: #F8F5F0;
   border: 1px solid var(--border);
   border-radius: 10px;
   display: flex;
