@@ -1,0 +1,49 @@
+.section {
+  background: var(--terra);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: clamp(32px, 5vw, 52px) clamp(40px, 5vw, 200px);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .statItem {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.statNumber {
+  font-family: var(--font-garamond);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-jakarta);
+  font-size: clamp(9px, 1.2vw, 11px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}

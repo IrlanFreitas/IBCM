@@ -1,5 +1,5 @@
 import { Hero } from '../components/Hero'
-import { ImpactBar } from '../components/ImpactBar'
+import { ImpactBar } from '../components/ImpactBar/ImpactBar'
 import { QuemSomosHome } from '../components/QuemSomosHome'
 import { ProjetosHome } from '../components/ProjetosHome'
 import { Depoimentos } from '../components/Depoimentos'
