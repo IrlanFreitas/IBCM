@@ -15,6 +15,12 @@ const DoeAgoraPage = lazy(() =>
 const TransparenciaPage = lazy(() =>
   import('./pages/TransparenciaPage').then((m) => ({ default: m.TransparenciaPage }))
 )
+const NoticiasPage = lazy(() =>
+  import('./pages/NoticiasPage').then((m) => ({ default: m.NoticiasPage }))
+)
+const NoticiaDetalhePage = lazy(() =>
+  import('./pages/NoticiaDetalhePage').then((m) => ({ default: m.NoticiaDetalhePage }))
+)
 
 function PageLoader() {
   return (
@@ -57,6 +63,8 @@ export const routes: RouteObject[] = [
       { path: '/quem-somos', element: withSuspense(QuemSomosPage) },
       { path: '/projetos', element: withSuspense(ProjetosPage) },
       { path: '/doe-agora', element: withSuspense(DoeAgoraPage) },
+      { path: '/noticias', element: withSuspense(NoticiasPage) },
+      { path: '/noticias/:slug', element: withSuspense(NoticiaDetalhePage) },
       { path: '/transparencia', element: withSuspense(TransparenciaPage) },
     ],
   },
