@@ -99,7 +99,7 @@ export function Footer() {
         <div className={styles.contactCol}>
           <span className={styles.contactColTitle}>Contato</span>
           {contatos.map(({ Icon, text }) => (
-            <div key={text} className={styles.contactItem}>
+            <div className={styles.contactItem}>
               <Icon size={14} color="var(--terra)" style={{ flexShrink: 0 }} />
               <span className={styles.contactText}>{text}</span>
             </div>
