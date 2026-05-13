@@ -1,0 +1,270 @@
+/* ── Section ───────────────────────────── */
+
+.section {
+  background: var(--creme-dark);
+  padding: clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px);
+}
+
+/* ── Inner ─────────────────────────────── */
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.text {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: auto;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.titleHighlight {
+  color: #C1440E;
+}
+
+.subtitle {
+  color: #1C1917;
+  opacity: .7;
+  margin-bottom: 15px;
+  max-width: 550px;
+  font-size: 16px;
+  margin: auto;
+  text-align: center;
+}
+
+.outroValor {
+  font-size: 13px;
+  font-weight: bold;
+  color: #1C1917;
+  opacity: .4;
+  margin-bottom: -10px;
+}
+
+/* ── Form card ─────────────────────────── */
+
+.formCard {
+  flex: 1;
+  width: 90%;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid var(--ink-10);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Toggle mensal / única ─────────────── */
+
+.toggle {
+  display: flex;
+  background: var(--ink-6);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  width: 60%;
+}
+
+.toggleBtn {
+  flex: 1;
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 0;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+/* ── Info box doação mensal ────────────── */
+
+.infoBox {
+  background: var(--musgo-light);
+  border: 1px solid rgba(58, 92, 59, 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.infoTitle {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--musgo-dark);
+  margin-bottom: 4px;
+  display: inline;
+}
+
+.infoText {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--musgo);
+  display: inline;
+}
+
+/* ── Cards de valor ────────────────────── */
+
+.valoresGrid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.valorBtn {
+  font-family: var(--font-garamond);
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  padding: 14px 0;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+/* ── Valor customizado ─────────────────── */
+
+.customValueWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  background: var(--ink-6);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  transition: border 200ms;
+}
+
+.customValuePrefix {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  color: var(--ink-40);
+}
+
+.customValueInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* ── Impacto do valor selecionado ──────── */
+
+.impacto {
+  background: var(--terra-light);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.impactoLabel {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 8px;
+}
+
+.impactoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.impactoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.impactoBullet {
+  /* color: var(--terra);
+  margin-top: 2px; */
+  flex-shrink: 0;
+}
+
+.impactoText {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  color: var(--ink-70);
+}
+
+/* ── CTA ───────────────────────────────── */
+
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--terra);
+  border-radius: var(--radius-full);
+  padding: 15px 0;
+  border: none;
+  cursor: pointer;
+  transition: background 200ms;
+  margin-bottom: 16px;
+}
+
+.ctaBtn:hover {
+  background: var(--terra-dark);
+}
+
+/* ── Badges de segurança ───────────────── */
+
+.badgesRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badgeText {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  color: var(--ink-40);
+}

@@ -1,0 +1,133 @@
+/* ── Section ───────────────────────────── */
+
+.section {
+  background: var(--creme);
+  padding: clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px);
+}
+
+/* ── Cabeçalho ─────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 15px 0;
+}
+
+.titleHighlight {
+  color: var(--terra);
+  font-style: italic;
+}
+
+.subtitle {
+  color: var(--ink-70);
+}
+
+/* ── Grid de cards ─────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Card ──────────────────────────────── */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(16px, 2vw, 24px);
+}
+
+.cardTagRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cardTag {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cardBadge {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-40);
+  background: var(--ink-6);
+  border-radius: var(--radius-full);
+  padding: 3px 8px;
+}
+
+.cardTitle {
+  font-family: var(--font-garamond);
+  font-size: clamp(18px, 3vw, 21px);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.cardDesc {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-70);
+  flex: 1;
+}
+
+/* ── Link ver todos ────────────────────── */
+
+.viewAllLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--terra);
+  text-decoration: none;
+  margin-top: 30px;
+}

@@ -1,0 +1,173 @@
+/* ── Footer base ───────────────────────── */
+
+.footer {
+  background: var(--ink);
+  padding: clamp(48px, 7vw, 80px) clamp(16px, 5vw, 60px) 0;
+}
+
+/* ── Top row ───────────────────────────── */
+
+.topRow {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .topRow {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+/* ── Coluna da marca ───────────────────── */
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 220px;
+}
+
+.brandLink {
+  text-decoration: none;
+}
+
+.brandName {
+  font-family: var(--font-garamond);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+.brandTagline {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 220px;
+}
+
+/* ── Redes sociais ─────────────────────── */
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+  transition: background 200ms, color 200ms;
+}
+
+.socialBtn:hover {
+  background: var(--terra);
+  color: white;
+}
+
+/* ── Grid de links ─────────────────────── */
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  flex: 1;
+}
+
+@media (min-width: 640px) {
+  .linksGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.linkCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linkColTitle {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 4px;
+}
+
+.linkColItem {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.linkColItem:hover {
+  color: white;
+}
+
+/* ── Coluna de contato ─────────────────── */
+
+.contactCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 200px;
+}
+
+.contactColTitle {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contactText {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Rodapé final ──────────────────────── */
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+@media (min-width: 640px) {
+  .bottomRow {
+    flex-direction: row;
+  }
+}
+
+.bottomText {
+  font-family: var(--font-jakarta);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.25);
+}

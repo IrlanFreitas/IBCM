@@ -1,0 +1,122 @@
+/* ── Section ───────────────────────────── */
+
+.section {
+  position: relative;
+  height: clamp(600px, 75svh, 800px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* ── Imagem de fundo ───────────────────── */
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1600&auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(35%);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+/* ── Gradient overlay ──────────────────── */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(28, 25, 23, 0.5) 0%, rgba(28, 25, 23, 0.9) 55%, rgba(193, 68, 14, 0.18) 100%);
+  z-index: 1;
+}
+
+/* ── Conteúdo ──────────────────────────── */
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(32px, 5vw, 80px) clamp(16px, 5vw, 60px);
+  padding-bottom: clamp(40px, 6vw, 88px);
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(40px, 11vw, 82px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--white);
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.titleHighlight {
+  color: var(--terra);
+}
+
+.lead {
+  font-family: var(--font-jakarta);
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+/* ── CTAs ──────────────────────────────── */
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+}
+
+@media (min-width: 640px) {
+  .ctas {
+    flex-direction: row;
+  }
+}
+
+.ctaPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--terra);
+  border-radius: var(--radius-full);
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: background 200ms;
+}
+
+.ctaPrimary:hover {
+  background: var(--terra-dark);
+}
+
+.ctaSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-full);
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: background 200ms;
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

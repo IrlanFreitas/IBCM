@@ -1,0 +1,26 @@
+/* ── Wrapper ────────────────────────────── */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* ── Traço decorativo ──────────────────── */
+
+.line {
+  width: 18px;
+  height: 1.5px;
+  flex-shrink: 0;
+}
+
+/* ── Texto ─────────────────────────────── */
+
+.text {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
-import { Eyebrow } from '../components/Eyebrow'
-import { ImageWithFallback } from '../components/figma/ImageWithFallback'
+import { Eyebrow } from '../components/Eyebrow/Eyebrow'
+import { ImageWithFallback } from '../components/ImageWithFallback/ImageWithFallback'
 import { useProjetos } from '../../hooks/useProjetos'
 // import type { WPProjeto } from '../../types/cms'
 

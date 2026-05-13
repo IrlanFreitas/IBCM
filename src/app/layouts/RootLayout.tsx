@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router'
-import { Navigation } from '../components/Navigation'
-import { Footer } from '../components/Footer'
+import { Navigation } from '../components/Navigation/Navigation'
+import { Footer } from '../components/Footer/Footer'
 
 export function RootLayout() {
   return (

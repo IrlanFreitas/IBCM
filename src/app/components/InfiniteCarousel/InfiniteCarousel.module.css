@@ -219,6 +219,30 @@
   background: var(--border);
 }
 
+/* ── CTA ───────────────────────────────── */
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-jakarta);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--terra);
+  border-radius: var(--radius-full);
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: background 200ms;
+  width: 200px;
+  margin: 48px auto 0;
+}
+
+.cta:hover {
+  background: var(--terra-dark);
+}
+
 @media (max-width: 480px) {
   :global(:root) {
     --card-width: 148px;

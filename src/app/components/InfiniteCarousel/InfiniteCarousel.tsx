@@ -46,31 +46,7 @@ export default function InfiniteCarousel() {
         </div>
       </div>
 
-      <Link
-        to="/doe-agora"
-        className="flex items-center justify-center gap-2"
-        style={{
-          fontFamily: "var(--font-jakarta)",
-          fontSize: "15px",
-          fontWeight: 600,
-          color: "var(--white)",
-          background: "var(--terra)",
-          borderRadius: "var(--radius-full)",
-          padding: "14px 28px",
-          textDecoration: "none",
-          transition: "background 200ms",
-          width: 200,
-          margin: 'auto',
-          marginTop: 48,
-          flex: 1,
-        }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.background = "var(--terra-dark)")
-        }
-        onMouseLeave={(e) =>
-          (e.currentTarget.style.background = "var(--terra)")
-        }
-      >
+      <Link to="/doe-agora" className={styles.cta}>
         Faça uma doação
       </Link>
     </section>

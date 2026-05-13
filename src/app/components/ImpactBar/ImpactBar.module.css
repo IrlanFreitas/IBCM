@@ -6,11 +6,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: clamp(32px, 5vw, 52px) clamp(40px, 5vw, 200px);
+  justify-content: center;
 }
 
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 200px);
+    gap: 32px;
   }
 }
 
@@ -20,15 +22,6 @@
   align-items: center;
   text-align: center;
   gap: 0.5rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .statItem {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
 }
 
 .statNumber {

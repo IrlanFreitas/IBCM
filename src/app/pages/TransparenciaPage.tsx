@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { FileText, Download, CheckCircle, Award } from 'lucide-react'
-import { Eyebrow } from '../components/Eyebrow'
+import { Eyebrow } from '../components/Eyebrow/Eyebrow'
 import { useOpcoes } from '../../hooks/useOpcoes'
 import { useRelatorios } from '../../hooks/useRelatorios'
 

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Eyebrow } from '../components/Eyebrow'
+import { Eyebrow } from '../components/Eyebrow/Eyebrow'
 import { useTimeline } from '../../hooks/useTimeline'
 import { useOpcoes } from '../../hooks/useOpcoes'
 

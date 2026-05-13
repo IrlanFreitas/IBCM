@@ -1,0 +1,67 @@
+/* ── Section ───────────────────────────── */
+
+.section {
+  background: var(--white);
+  padding: clamp(48px, 7vw, 104px) clamp(16px, 5vw, 60px);
+  display: flex;
+  gap: 20px;
+}
+
+/* ── Bloco de texto ────────────────────── */
+
+.textBlock {
+  max-width: 560px;
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.titleHighlight {
+  color: var(--terra);
+  font-style: italic;
+}
+
+.body {
+  font-family: var(--font-jakarta);
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.75;
+  color: var(--ink-70);
+  margin-bottom: 28px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--terra);
+  text-decoration: none;
+  transition: gap 200ms;
+}
+
+.link:hover {
+  gap: 10px;
+}
+
+/* ── Bloco de imagem ───────────────────── */
+
+.imageBlock {
+  max-width: 560px;
+  width: 100%;
+}
+
+.image {
+  height: 310px;
+  object-fit: cover;
+  width: 100%;
+  object-position: 50% 30%;
+  border-radius: var(--radius-xl);
+}

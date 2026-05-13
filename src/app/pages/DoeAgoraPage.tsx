@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
-import { Eyebrow } from '../components/Eyebrow'
-import { DoeAgora } from '../components/DoeAgora'
+import { Eyebrow } from '../components/Eyebrow/Eyebrow'
+import { DoeAgora } from '../components/DoeAgora/DoeAgora'
 import { ImpactBar } from '../components/ImpactBar/ImpactBar'
 
 const ease = [0.22, 1, 0.36, 1] as const
