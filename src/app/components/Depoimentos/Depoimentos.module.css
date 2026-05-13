@@ -27,8 +27,9 @@
 
 .subtitle {
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   max-width: 550px;
+  font-size: 24px;
 }
 
 /* ── Grid ──────────────────────────────── */
@@ -36,7 +37,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 100px;
 }
 
 @media (min-width: 768px) {
@@ -58,11 +59,8 @@
 
 .quote {
   font-family: var(--font-garamond);
-  font-size: 80px;
+  font-size: 40px;
   line-height: 0.8;
-  font-style: italic;
-  opacity: 0.35;
-  margin-bottom: 12px;
   user-select: none;
 }
 

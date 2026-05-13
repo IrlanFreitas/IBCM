@@ -156,7 +156,7 @@ export function ProjetosHome() {
           <Eyebrow>Projetos e causas</Eyebrow>
           <h2 className={styles.title}>
             O que fazemos{' '}
-            <em className={styles.titleHighlight}>na prática</em>
+            <span className={styles.titleHighlight}>na prática</span>
           </h2>
           <p className={styles.subtitle}>
             Projetos que combinam cuidado imediato com transformação de longo

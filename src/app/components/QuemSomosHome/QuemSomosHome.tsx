@@ -28,7 +28,7 @@ export function QuemSomosHome() {
 
         <h2 className={styles.title}>
           Uma história de{' '}
-          <em className={styles.titleHighlight}>resistência</em>{' '}
+          <span className={styles.titleHighlight}>resistência</span>{' '}
           e cuidado
         </h2>
 

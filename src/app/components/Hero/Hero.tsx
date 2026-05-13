@@ -1,10 +1,10 @@
-import { motion } from 'motion/react'
-import { Link } from 'react-router'
-import { ArrowRight } from 'lucide-react'
-import { Eyebrow } from '../Eyebrow/Eyebrow'
-import styles from './Hero.module.css'
+import { motion } from "motion/react";
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
 
-const ease = [0.22, 1, 0.36, 1] as const
+import styles from "./Hero.module.css";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   return (
@@ -34,7 +34,20 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.1 }}
         >
-          <Eyebrow color="var(--ocre)">Desde 1986 Salvador, Bahia</Eyebrow>
+          {/* <Eyebrow color="var(--ocre)"> Salvador, Bahia</Eyebrow> */}
+
+          <div className={styles.wrapper}>
+            <span className={styles.text} style={{ color: "var(--ocre)" }}>
+              Desde 1986
+            </span>
+            <div
+              className={styles.line}
+              style={{ background: "var(--ocre)" }}
+            />
+            <span className={styles.text} style={{ color: "var(--ocre)" }}>
+              Salvador, Bahia
+            </span>
+          </div>
         </motion.div>
 
         {/* Título */}
@@ -45,7 +58,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease, delay: 0.2 }}
         >
           38 anos <br />
-          cuidando de{' '}<br />
+          cuidando de <br />
           <span className={styles.titleHighlight}>quem precisa</span>
         </motion.h1>
 
@@ -56,7 +69,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.38 }}
         >
-          Acolhimento, moradia, educação e defesa de direitos para pessoas que vivem com HIV/AIDS e grupos historicamente marginalizados.
+          Acolhimento, moradia, educação e defesa de direitos para pessoas que
+          vivem com HIV/AIDS e grupos historicamente marginalizados.
         </motion.p>
 
         {/* CTAs */}
@@ -77,5 +91,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

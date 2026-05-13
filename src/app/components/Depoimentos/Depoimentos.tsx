@@ -49,7 +49,7 @@ export function Depoimentos() {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, ease }}
       >
-        <Eyebrow color="var(--ocre)">Depoimentos</Eyebrow>
+        <Eyebrow color="var(--ocre)">Impacto Real</Eyebrow>
         <h2 className={styles.title}>
           Vidas transformadas,{' '}
           <em className={styles.titleHighlight}>histórias reais</em>
