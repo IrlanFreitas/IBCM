@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
-import { useTimeline } from '../../../hooks/useTimeline'
+// import { useTimeline } from '../../../hooks/useTimeline'
 import styles from './TimelineSection.module.css'
 
 // WP: useTimeline() já está integrado em /wp-json/wp/v2/timeline_event
@@ -18,7 +18,7 @@ const STATIC_TIMELINE = [
 ]
 
 export function TimelineSection() {
-  const { data: wpTimeline } = useTimeline()
+  // const { data: wpTimeline } = useTimeline()
 
   // const timeline = wpTimeline?.map((ev) => ({
   //   ano: ev.acf.ano,

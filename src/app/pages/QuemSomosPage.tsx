@@ -1,7 +1,6 @@
 import { motion } from 'motion/react'
 import { useOpcoes } from '../../hooks/useOpcoes'
 import { BannerQuemSomos } from '../components/QuemSomos/BannerQuemSomos'
-import { HeroQuemSomos } from '../components/QuemSomos/HeroQuemSomos'
 import { FundadoraSection } from '../components/QuemSomos/FundadoraSection'
 import { TimelineSection } from '../components/QuemSomos/TimelineSection'
 import { GaleriaSection } from '../components/QuemSomos/GaleriaSection'
