@@ -1,0 +1,123 @@
+.section {
+  background: var(--creme);
+  padding: clamp(80px, 10vw, 120px) clamp(16px, 5vw, 60px) clamp(48px, 7vw, 80px);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(36px, 7vw, 68px);
+  font-weight: 500;
+  line-height: 1.06;
+  color: var(--ink);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.titleAccent {
+  color: var(--terra);
+  font-style: italic;
+}
+
+.lead {
+  font-family: var(--font-jakarta);
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.75;
+  color: var(--ink-70);
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+
+.imageWrapper {
+  flex: 0 0 clamp(260px, 36vw, 480px);
+  position: relative;
+}
+
+.imageFrame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageBadge {
+  position: absolute;
+  bottom: 24px;
+  left: -20px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  box-shadow: 0 12px 40px rgba(28, 25, 23, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badgeYear {
+  font-family: var(--font-garamond);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--terra);
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-70);
+  line-height: 1.3;
+  max-width: 60px;
+}
+
+.decorDot {
+  position: absolute;
+  top: 32px;
+  right: -16px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--terra-light);
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .imageWrapper {
+    flex: unset;
+    width: 85%;
+    max-width: 360px;
+    align-self: center;
+  }
+
+  .imageBadge {
+    left: 12px;
+  }
+
+  .lead {
+    max-width: 100%;
+  }
+}

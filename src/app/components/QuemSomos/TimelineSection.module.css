@@ -1,0 +1,90 @@
+.section {
+  background: var(--creme);
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 60px);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 640px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: flex-start;
+  padding: clamp(24px, 3.5vw, 44px) 0;
+}
+
+.year {
+  flex: 0 0 clamp(72px, 8vw, 96px);
+  font-family: var(--font-garamond);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--terra);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eventTitle {
+  font-family: var(--font-garamond);
+  font-size: clamp(16px, 2vw, 19px);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.eventDesc {
+  font-family: var(--font-jakarta);
+  font-size: clamp(13px, 1.5vw, 15px);
+  line-height: 1.75;
+  color: var(--ink-70);
+  margin: 0;
+  max-width: 680px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--ink-12);
+}
+
+@media (max-width: 480px) {
+  .item {
+    gap: 16px;
+  }
+
+  .year {
+    flex: 0 0 58px;
+  }
+}
