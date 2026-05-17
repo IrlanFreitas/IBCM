@@ -1,0 +1,47 @@
+.section {
+  background: var(--ink);
+  padding: clamp(48px, 6vw, 72px) clamp(16px, 5vw, 60px) clamp(28px, 4vw, 52px);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-family: var(--font-garamond);
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  color: var(--white);
+  margin: 0;
+  max-width: 720px;
+}
+
+.lead {
+  font-family: var(--font-jakarta);
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ── Variante centralizada ─────────────── */
+
+.containerCentered {
+  align-items: center;
+  text-align: center;
+}
+
+.containerCentered .title {
+  max-width: 800px;
+}
+
+.containerCentered .lead {
+  max-width: 560px;
+}

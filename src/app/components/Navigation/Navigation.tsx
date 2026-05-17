@@ -27,8 +27,8 @@ export function Navigation() {
   }, [drawerOpen])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDrawerOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [location.pathname])
 
   return (

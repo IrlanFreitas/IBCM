@@ -1,12 +1,11 @@
-import { motion } from 'motion/react'
-import { Eyebrow } from '../components/Eyebrow/Eyebrow'
-import { ImageWithFallback } from '../components/ImageWithFallback/ImageWithFallback'
-import { useProjetos } from '../../hooks/useProjetos'
+import { PageBanner } from '../components/PageBanner/PageBanner'
+import { ProjetosList } from '../components/Projetos/ProjetosList'
+import { DoacaoBanner } from '../components/Projetos/DoacaoBanner'
+// import { useProjetos } from '../../hooks/useProjetos'
+import type { Projeto } from '../components/Projetos/ProjetosList'
 // import type { WPProjeto } from '../../types/cms'
 
-const ease = [0.22, 1, 0.36, 1] as const
-
-const STATIC_PROJETOS = [
+const STATIC_PROJETOS: Projeto[] = [
   {
     titulo: 'HIV/AIDS — Prevenção e acolhimento',
     tag: 'Saúde',
@@ -14,11 +13,16 @@ const STATIC_PROJETOS = [
     cor: 'var(--terra)',
     image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&auto=format&fit=crop&q=80',
     descricao:
-      'Atendimento integral às pessoas vivendo com HIV/AIDS em Salvador. O programa cobre distribuição de medicamentos ARV, suporte emocional e psicológico, orientação jurídica e 29 casas de apoio espalhadas pela cidade.',
-    numeros: [
-      { valor: '29', label: 'Casas de apoio' },
-      { valor: '+800', label: 'Pacientes atendidos/ano' },
-      { valor: '100%', label: 'Gratuito' },
+      'Desde 1986, é a primeira e principal missão do IBCM. Oferecemos testagem rápida, distribuição de preservativos, orientação sobre PrEP e PEP, acompanhamento terapêutico e suporte emocional para pessoas vivendo com HIV/AIDS.',
+    impacto:
+      'Criado em 1986, atendemos mais de 60 mil pessoas. Hoje realizamos uma média de 660 testagens por mês e distribuímos 15 mil preservativos mensalmente.',
+    bullets: [
+      'Testagem rápida gratuita e sigilosa',
+      'Distribuição de insumos de prevenção (preservativos, gel lubrificante)',
+      'Orientação sobre PrEP (Profilaxia Pré-Exposição) e PEP (Profilaxia Pós-Exposição)',
+      'Grupos de apoio e suporte psicológico',
+      'Acompanhamento de adesão ao tratamento antirretroviral',
+      'Ronda Noturna: atendimento a profissionais do sexo e população de rua',
     ],
   },
   {
@@ -27,12 +31,18 @@ const STATIC_PROJETOS = [
     tagColor: 'var(--musgo)',
     cor: 'var(--musgo)',
     image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&auto=format&fit=crop&q=80',
+    badge: '88 crianças · turno integral',
     descricao:
-      'Educação infantil de qualidade para crianças de 0 a 5 anos em situação de vulnerabilidade. Turno integral com alimentação, cuidados de saúde, estimulação e atividades pedagógicas voltadas ao desenvolvimento integral.',
-    numeros: [
-      { valor: '88', label: 'Crianças atendidas' },
-      { valor: 'Turno integral', label: 'Funcionamento' },
-      { valor: '+2.4k', label: 'Formadas desde 1995' },
+      'A Creche IBCM atende crianças de 6 meses a 5 anos, muitas delas vivendo com HIV ou filhas de mães soropositivas. O cuidado vai além da educação infantil: inclui cinco refeições diárias balanceadas, acompanhamento médico especializado e suporte às famílias.',
+    impacto:
+      'Mais de 2.400 crianças já passaram pela creche em 26 anos. Hoje atendemos 88 crianças em turno integral, com taxa zero de abandono escolar.',
+    bullets: [
+      'Educação infantil de qualidade com pedagogia especializada',
+      'Cinco refeições diárias balanceadas nutricionalmente',
+      'Acompanhamento médico e de enfermagem in loco',
+      'Controle e administração de medicação antirretroviral',
+      'Atividades lúdico-terapêuticas e arte-educação',
+      'Suporte psicossocial às famílias',
     ],
   },
   {
@@ -42,11 +52,16 @@ const STATIC_PROJETOS = [
     cor: 'var(--ocre)',
     image: 'https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=1200&auto=format&fit=crop&q=80',
     descricao:
-      'Centro de referência LGBTQIA+ de Salvador com atendimento jurídico, psicológico, cultural e de geração de renda. O Casarão é espaço seguro para a comunidade e ponto de articulação de políticas públicas inclusivas.',
-    numeros: [
-      { valor: '+1.2k', label: 'Atendimentos/ano' },
-      { valor: '5', label: 'Serviços oferecidos' },
-      { valor: '2003', label: 'Desde' },
+      'Centro de referência para a população LGBTQIA+ de Salvador, com atendimento jurídico, psicológico, cultural e de geração de renda. Espaço seguro e ponto de articulação de políticas públicas inclusivas em parceria com o Governo da Bahia.',
+    impacto:
+      'Assumimos a gestão do Casarão em 2018. Hoje realizamos mais de 1.200 atendimentos por ano e somos referência estadual em direitos da diversidade.',
+    bullets: [
+      'Atendimento jurídico gratuito para casos de discriminação',
+      'Acompanhamento psicológico individual e em grupo',
+      'Programas culturais e de formação profissional',
+      'Geração de renda e empreendedorismo',
+      'Articulação de políticas públicas inclusivas',
+      'Espaço seguro para acolhimento e convivência',
     ],
   },
   {
@@ -55,199 +70,80 @@ const STATIC_PROJETOS = [
     tagColor: 'var(--ink)',
     cor: 'var(--ink)',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&auto=format&fit=crop&q=80',
+    badge: '14 a 22 anos · desde 1992',
     descricao:
-      'Programa de qualificação profissional e inserção no mercado de trabalho para jovens de 14 a 22 anos. Parceria com empresas locais para garantir colocação profissional e renda às famílias.',
-    numeros: [
-      { valor: '+15k', label: 'Jovens formados' },
-      { valor: '14–22', label: 'Faixa etária' },
-      { valor: '1992', label: 'Desde' },
+      'Programa de qualificação profissional e inserção no mercado de trabalho para jovens em situação de vulnerabilidade social. Em parceria com empresas locais, garantimos formação técnica, comportamental e colocação profissional.',
+    impacto:
+      'Desde 1992, mais de 15 mil jovens foram inseridos no mercado formal de trabalho. O programa mantém taxa de empregabilidade superior a 70% após a conclusão.',
+    bullets: [
+      'Formação técnica e comportamental certificada',
+      'Parceria com empresas de Salvador e região metropolitana',
+      'Acompanhamento durante e após o contrato de aprendizagem',
+      'Orientação vocacional e planejamento de carreira',
+      'Suporte psicossocial ao jovem e sua família',
+      'Conexão com oportunidades de emprego efetivo',
+    ],
+  },
+  {
+    titulo: 'Casas de Apoio',
+    tag: 'Acolhimento',
+    tagColor: 'var(--terra)',
+    cor: 'var(--terra)',
+    image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1200&auto=format&fit=crop&q=80',
+    badge: '29 casas · Salvador',
+    descricao:
+      'Rede de moradia temporária e permanente para pessoas vivendo com HIV/AIDS e suas famílias em situação de vulnerabilidade. Oferecemos abrigo seguro, alimentação, cuidados de saúde e acompanhamento para a reintegração social.',
+    impacto:
+      'São 29 casas ativas em Salvador. Cada casa acolhe em média 8 pessoas, garantindo moradia digna, alimentação e cuidados diários para quem mais precisa.',
+    bullets: [
+      'Moradia temporária e permanente em ambiente seguro',
+      'Três refeições diárias balanceadas',
+      'Distribuição e acompanhamento de medicação ARV',
+      'Suporte jurídico para regularização de documentos',
+      'Preparação para a vida independente e autônoma',
+      'Visitas domiciliares e acompanhamento contínuo',
     ],
   },
 ]
 
-// type ProjetoCard = typeof STATIC_PROJETOS[0]
-
-// function wpToCard(wp: WPProjeto): ProjetoCard {
-//   const media = wp._embedded?.['wp:featuredmedia']?.[0]
-//   const imagemUrl = wp.acf.imagemprincipal ?? media?.source_url ?? ''
-
+// function wpToCard(wp: WPProjeto): Projeto {
 //   return {
 //     titulo: wp.title.rendered,
 //     tag: wp.acf.tag,
 //     tagColor: wp.acf.tagcolor,
 //     cor: wp.acf.tagcolor,
-//     // image: imagemUrl,
+//     image: wp.acf.imagemprincipal ?? '',
 //     descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
-//     // numeros: wp.acf.numeros ?? [],
+//     bullets: wp.acf.bullets ?? [],
 //   }
 // }
 
 export function ProjetosPage() {
-  const { data: wpProjetos } = useProjetos()
-  // const projetos = wpProjetos?.map(wpToCard) ?? STATIC_PROJETOS      
+  // TODO: const { data: wpProjetos } = useProjetos()
+  // const projetos = wpProjetos?.map(wpToCard) ?? STATIC_PROJETOS
   const projetos = STATIC_PROJETOS
-  // const projetos = wpProjetos
-
-  console.log(wpProjetos)
 
   return (
     <>
-      {/* Hero */}
-      <section
-        style={{
-          background: 'var(--ink)',
-          padding: 'clamp(48px, 8vw, 96px) clamp(16px, 5vw, 60px)',
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
-          style={{ maxWidth: '600px' }}
-        >
-          <Eyebrow color="var(--ocre)">Projetos e causas</Eyebrow>
-          <h1
-            style={{
-              fontFamily: 'var(--font-garamond)',
-              fontSize: 'clamp(36px, 8vw, 68px)',
-              fontWeight: 500,
-              lineHeight: 1.08,
-              color: 'var(--white)',
-              marginBottom: '20px',
-            }}
-          >
-            Cuidado em todas as{' '}
-            <em style={{ color: 'var(--terra)', fontStyle: 'italic' }}>frentes</em>
-          </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-jakarta)',
-              fontSize: 'clamp(14px, 2vw, 16px)',
-              lineHeight: 1.75,
-              color: 'rgba(255,255,255,0.65)',
-            }}
-          >
-            Quatro programas que atuam de forma integrada para transformar a realidade de
-            milhares de pessoas em Salvador.
-          </p>
-        </motion.div>
-      </section>
+      <PageBanner
+        eyebrow="Causas e projetos"
+        eyebrowColor="var(--ocre)"
+        title={
+          <>
+            Cuidado que transforma,{' '}
+            <br />
+            <em style={{ color: 'var(--ocre)', fontStyle: 'normal' }}>
+              impacto que dura
+            </em>
+          </>
+        }
+        lead="Cada projeto da IBCM combina acolhimento imediato com transformação de longo prazo. Não fazemos assistencialismo, aqui construímos autonomia, dignidade e futuro."
+        ariaLabel="Título da página Projetos e Causas"
+      />
 
-      {/* Lista de projetos */}
-      <section
-        style={{
-          background: 'var(--creme)',
-          padding: 'clamp(48px, 7vw, 80px) clamp(16px, 5vw, 60px)',
-        }}
-      >
-        <div className="flex flex-col gap-16">
-          {projetos.map((projeto, i) => (
-            <motion.article
-              key={projeto.titulo}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, ease }}
-              className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
-            >
-              {/* Imagem */}
-              <div
-                style={{
-                  flex: '0 0 auto',
-                  width: '100%',
-                  maxWidth: '480px',
-                  aspectRatio: '4/3',
-                  borderRadius: 'var(--radius-xl)',
-                  overflow: 'hidden',
-                }}
-              >
-                <ImageWithFallback
-                  src={projeto.image}
-                  alt={projeto.titulo}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+      <ProjetosList projetos={projetos} />
 
-              {/* Conteúdo */}
-              <div className="flex flex-col flex-1">
-                <span
-                  style={{
-                    fontFamily: 'var(--font-jakarta)',
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    letterSpacing: '2.5px',
-                    textTransform: 'uppercase',
-                    color: projeto.tagColor,
-                    marginBottom: '12px',
-                  }}
-                >
-                  {projeto.tag}
-                </span>
-
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-garamond)',
-                    fontSize: 'clamp(24px, 4vw, 36px)',
-                    fontWeight: 500,
-                    lineHeight: 1.2,
-                    color: 'var(--ink)',
-                    marginBottom: '16px',
-                  }}
-                >
-                  {projeto.titulo}
-                </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'var(--font-jakarta)',
-                    fontSize: '15px',
-                    lineHeight: 1.75,
-                    color: 'var(--ink-70)',
-                    marginBottom: '24px',
-                  }}
-                  dangerouslySetInnerHTML={{ __html: projeto.descricao }}
-                />
-
-                {/* Números */}
-                {projeto.numeros.length > 0 && (
-                  <div
-                    className="flex gap-6"
-                    style={{
-                      paddingTop: '20px',
-                      borderTop: '1px solid var(--ink-10)',
-                    }}
-                  >
-                    {projeto.numeros.map((n) => (
-                      <div key={n.label} className="flex flex-col gap-1">
-                        <span
-                          style={{
-                            fontFamily: 'var(--font-garamond)',
-                            fontSize: '26px',
-                            fontWeight: 500,
-                            color: projeto.cor,
-                          }}
-                        >
-                          {n.valor}
-                        </span>
-                        <span
-                          style={{
-                            fontFamily: 'var(--font-jakarta)',
-                            fontSize: '11px',
-                            color: 'var(--ink-40)',
-                            letterSpacing: '0.5px',
-                          }}
-                        >
-                          {n.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+      <DoacaoBanner />
     </>
   )
 }
