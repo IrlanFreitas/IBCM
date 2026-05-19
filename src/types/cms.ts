@@ -52,7 +52,11 @@ export interface WPOpcoes {
   hero_titulo: string
   hero_subtitulo: string
   hero_imagem: { url: string } | null
-  stats: Array<{ numero: string; label: string }>
+  stats: Array<{
+    icon: null;
+    numero: string; 
+    label: string;
+}>
   valores_doacao: Array<{
     valor: number
     impactos: Array<{ texto: string }>

@@ -47,7 +47,7 @@ export default function InfiniteCarousel() {
       </div>
 
       <Link to="/doe-agora" className={styles.cta}>
-        Faça uma doação
+        Quero ser um parceiro
       </Link>
     </section>
   );

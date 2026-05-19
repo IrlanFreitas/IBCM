@@ -41,6 +41,7 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
                 className={styles.image}
               />
             </div>
+            <div className={styles.divider}/>
             <div className={styles.impactBox}>
               <span className={styles.impactLabel}>Impacto em números</span>
               <p className={styles.impactText}>{projeto.impacto}</p>

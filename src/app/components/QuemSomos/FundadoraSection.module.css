@@ -12,14 +12,15 @@
 }
 
 .imageCol {
-  flex: 0 0 clamp(240px, 30vw, 400px);
+  flex: 0 0 clamp(260px, 35vw, 440px);
   position: sticky;
   top: 100px;
+  align-self: flex-start;
 }
 
 .imageFrame {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--ink-10);
@@ -51,16 +52,6 @@
   margin-bottom: 6px;
 }
 
-.role {
-  font-family: var(--font-jakarta);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--terra);
-  margin-bottom: 24px;
-}
-
 .bio {
   font-family: var(--font-garamond);
   font-size: clamp(16px, 2.2vw, 18px);
@@ -69,37 +60,19 @@
   margin-bottom: 16px;
 }
 
-.link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-jakarta);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--terra);
-  text-decoration: none;
-  margin-top: 8px;
-  transition: gap 300ms ease;
-}
-
-.link:hover {
-  gap: 14px;
-}
-
 .quoteBlock {
-  margin: 32px 0;
-  padding: 24px 28px;
-  background: var(--terra-light);
-  border-radius: var(--radius-lg);
-  border-left: 3px solid var(--terra);
+  margin: 28px 0 0;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .quoteText {
   font-family: var(--font-garamond);
-  font-size: clamp(17px, 2.5vw, 21px);
-  font-style: italic;
-  line-height: 1.65;
-  color: var(--ink);
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.7;
+  color: var(--terra-dark);
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -109,9 +82,14 @@
 
   .imageCol {
     flex: unset;
-    width: 80%;
-    max-width: 320px;
+    width: 75%;
+    max-width: 300px;
     align-self: center;
     position: static;
+    order: 2;
+  }
+
+  .content {
+    order: 1;
   }
 }

@@ -93,12 +93,12 @@
 
 .carouselOuter::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+  background: linear-gradient(to right, white 0%, transparent 100%);
 }
 
 .carouselOuter::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+  background: linear-gradient(to left, white 0%, transparent 100%);
 }
 
 .carouselTrackWrapper {
@@ -235,7 +235,7 @@
   padding: 14px 28px;
   text-decoration: none;
   transition: background 200ms;
-  width: 200px;
+  width: 220px;
   margin: 48px auto 0;
 }
 

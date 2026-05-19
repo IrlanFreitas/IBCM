@@ -167,7 +167,8 @@ export function NoticiaDetalhePage() {
       {/* Conteúdo principal */}
       <div
         style={{
-          maxWidth: '840px',
+          maxWidth: '1200px',
+          margin: 'auto',
           padding: 'clamp(32px, 5vw, 56px) clamp(16px, 5vw, 60px) 0',
         }}
       >

@@ -9,7 +9,7 @@
 }
 
 .header {
-  max-width: 640px;
+  max-width: 700px;
   margin-bottom: clamp(36px, 5vw, 56px);
 }
 
@@ -58,7 +58,6 @@
 .eventTitle {
   font-family: var(--font-garamond);
   font-size: clamp(16px, 2vw, 19px);
-  font-style: italic;
   font-weight: 500;
   color: var(--ink);
   line-height: 1.25;
