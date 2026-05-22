@@ -1,9 +1,9 @@
 import { PageBanner } from '../components/PageBanner/PageBanner'
 import { ProjetosList } from '../components/Projetos/ProjetosList'
 import { DoacaoBanner } from '../components/Projetos/DoacaoBanner'
-// import { useProjetos } from '../../hooks/useProjetos'
+import { useProjetos } from '../../hooks/useProjetos'
 import type { Projeto } from '../components/Projetos/ProjetosList'
-// import type { WPProjeto } from '../../types/cms'
+import type { WPProjeto } from '../../types/cms'
 
 const STATIC_PROJETOS: Projeto[] = [
   {
@@ -106,22 +106,25 @@ const STATIC_PROJETOS: Projeto[] = [
   },
 ]
 
-// function wpToCard(wp: WPProjeto): Projeto {
-//   return {
-//     titulo: wp.title.rendered,
-//     tag: wp.acf.tag,
-//     tagColor: wp.acf.tagcolor,
-//     cor: wp.acf.tagcolor,
-//     image: wp.acf.imagemprincipal ?? '',
-//     descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
-//     bullets: wp.acf.bullets ?? [],
-//   }
-// }
+function wpToProjeto(wp: WPProjeto): Projeto {
+  const media = wp._embedded?.['wp:featuredmedia']?.[0]
+  const image = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
+  return {
+    titulo: wp.title.rendered,
+    tag: wp.acf.tag,
+    tagColor: wp.acf.tagcolor,
+    cor: wp.acf.tagcolor,
+    image,
+    badge: wp.acf.numeros || undefined,
+    descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
+    impacto: wp.acf.impacto ?? '',
+    bullets: (wp.acf.bullets ?? []).map((b) => b.texto),
+  }
+}
 
 export function ProjetosPage() {
-  // TODO: const { data: wpProjetos } = useProjetos()
-  // const projetos = wpProjetos?.map(wpToCard) ?? STATIC_PROJETOS
-  const projetos = STATIC_PROJETOS
+  const { data: wpProjetos } = useProjetos()
+  const projetos = wpProjetos?.filter((p) => p.acf.ativo).map(wpToProjeto) ?? STATIC_PROJETOS
 
   return (
     <>

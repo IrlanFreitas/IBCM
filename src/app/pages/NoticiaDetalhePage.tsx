@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router'
 import { motion } from 'motion/react'
 import { ArrowLeft } from 'lucide-react'
 import { ImageWithFallback } from '../components/ImageWithFallback/ImageWithFallback'
+import { useNoticia } from '../../hooks/useNoticias'
 import { NOTICIAS } from '../data/noticias'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -10,7 +11,10 @@ export function NoticiaDetalhePage() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
 
-  const noticia = NOTICIAS.find((n) => n.slug === slug)
+  const { data: wpNoticia, isLoading } = useNoticia(slug ?? '')
+  const noticia = wpNoticia ?? NOTICIAS.find((n) => n.slug === slug)
+
+  if (isLoading && !noticia) return null
 
   if (!noticia) {
     return (

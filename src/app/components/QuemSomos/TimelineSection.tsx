@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
-// import { useTimeline } from '../../../hooks/useTimeline'
+import { useTimeline } from '../../../hooks/useTimeline'
 import styles from './TimelineSection.module.css'
 
 // WP: useTimeline() já está integrado em /wp-json/wp/v2/timeline_event
@@ -11,23 +11,23 @@ const ease = [0.22, 1, 0.36, 1] as const
 const STATIC_TIMELINE = [
   { ano: 1986, titulo: 'Fundação da IBCM', descricao: 'Maria Conceição começa a acolher pessoas com HIV/AIDS abandonadas em Salvador, na época do pânico moral da epidemia.', cor: 'var(--terra)' },
   { ano: 1990, titulo: 'Primeiras casas de apoio', descricao: 'Criação das casas de apoio para famílias inteiras vivendo com HIV, oferecendo moradia, alimentação e dignidade.', cor: 'var(--ocre)' },
-  { ano: 1998, titulo: 'Creche IBCM', descricao: 'Inauguração da creche especializada em crianças soropositivas, com alimentação adequada e acompanhamento médico.', cor: 'var(--musgo)' },
-  { ano: 2000, titulo: 'Adolescente Aprendiz', descricao: 'Início do programa que já inseriu mais de 15 mil jovens vulneráveis no mercado formal de trabalho.', cor: 'var(--terra)' },
-  { ano: 2018, titulo: 'CPDD — Casarão da Diversidade', descricao: 'Assumimos a gestão do Centro de Promoção e Defesa dos Direitos LGBT+ em parceria com o Governo da Bahia.', cor: 'var(--ocre)' },
-  { ano: 2026, titulo: '38 anos de resistência', descricao: 'Seguimos firmes, cuidando de quem importa e defendendo direitos humanos em Salvador e na Bahia.', cor: 'var(--musgo)' },
+  // { ano: 1998, titulo: 'Creche IBCM', descricao: 'Inauguração da creche especializada em crianças soropositivas, com alimentação adequada e acompanhamento médico.', cor: 'var(--musgo)' },
+  // { ano: 2000, titulo: 'Adolescente Aprendiz', descricao: 'Início do programa que já inseriu mais de 15 mil jovens vulneráveis no mercado formal de trabalho.', cor: 'var(--terra)' },
+  // { ano: 2018, titulo: 'CPDD — Casarão da Diversidade', descricao: 'Assumimos a gestão do Centro de Promoção e Defesa dos Direitos LGBT+ em parceria com o Governo da Bahia.', cor: 'var(--ocre)' },
+  // { ano: 2026, titulo: '38 anos de resistência', descricao: 'Seguimos firmes, cuidando de quem importa e defendendo direitos humanos em Salvador e na Bahia.', cor: 'var(--musgo)' },
 ]
 
 export function TimelineSection() {
-  // const { data: wpTimeline } = useTimeline()
-
-  // const timeline = wpTimeline?.map((ev) => ({
-  //   ano: ev.acf.ano,
-  //   titulo: ev.title.rendered,
-  //   descricao: ev.acf.descricao,
-  //   cor: ev.acf.cor || 'var(--terra)',
-  // })) ?? STATIC_TIMELINE
-
-  const timeline = STATIC_TIMELINE
+  const { data: wpTimeline } = useTimeline()
+  const timeline =
+    wpTimeline
+      ?.map((ev) => ({
+        ano: ev.acf.ano,
+        titulo: ev.title.rendered,
+        descricao: ev.acf.descricao,
+        cor: ev.acf.cor || 'var(--terra)',
+      }))
+      .sort((a, b) => a.ano - b.ano) ?? STATIC_TIMELINE
 
   return (
     <section className={styles.section}>

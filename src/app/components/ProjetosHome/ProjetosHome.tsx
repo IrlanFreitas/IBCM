@@ -4,12 +4,9 @@ import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback'
+import { useProjetos } from '../../../hooks/useProjetos'
+import type { WPProjeto } from '../../../types/cms'
 import styles from './ProjetosHome.module.css'
-
-// TODO: descomentar e integrar quando WordPress estiver disponível
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// import { useProjetos } from '../../../hooks/useProjetos'
-// import type { WPProjeto } from '../../../types/cms'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -66,19 +63,28 @@ const STATIC_PROJETOS = [
 
 type CardData = (typeof STATIC_PROJETOS)[0]
 
-// TODO: descomentar quando integração com WordPress estiver disponível
-// function wpToCard(wp: WPProjeto): CardData {
-//   const media = wp._embedded?.['wp:featuredmedia']?.[0]
-//   const imagemUrl = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
-//   return {
-//     id: wp.id,
-//     titulo: wp.title.rendered,
-//     tag: wp.acf.tag,
-//     tagColor: wp.acf.tagcolor,
-//     descricao: wp.acf.descricaocurta,
-//     image: imagemUrl,
-//   }
-// }
+const GRADIENT_MAP: Record<string, string> = {
+  'var(--terra)': 'linear-gradient(90deg, var(--terra) 0%, var(--terra-mid) 100%)',
+  'var(--musgo)': 'linear-gradient(90deg, var(--musgo) 0%, var(--musgo-light) 100%)',
+  'var(--ocre)': 'linear-gradient(90deg, var(--ocre) 0%, var(--ocre-light) 100%)',
+  'var(--ink)': 'linear-gradient(90deg, var(--ink) 0%, var(--ink-40) 100%)',
+}
+
+function wpToCard(wp: WPProjeto): CardData {
+  const media = wp._embedded?.['wp:featuredmedia']?.[0]
+  const imagemUrl = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
+  const tagColor = wp.acf.tagcolor
+  return {
+    id: wp.id,
+    titulo: wp.title.rendered,
+    tag: wp.acf.tag,
+    tagColor,
+    gradient: GRADIENT_MAP[tagColor] ?? `linear-gradient(90deg, ${tagColor} 0%, transparent 100%)`,
+    descricao: wp.acf.descricaocurta,
+    badge: wp.acf.numeros || null,
+    image: imagemUrl,
+  }
+}
 
 function ProjetoCard({ projeto, index }: { projeto: CardData; index: number }) {
   const [hovered, setHovered] = useState(false)
@@ -143,10 +149,9 @@ function ProjetoCard({ projeto, index }: { projeto: CardData; index: number }) {
 }
 
 export function ProjetosHome() {
-  // TODO: descomentar quando integração com WordPress estiver disponível
-  // const { data: wpProjetos } = useProjetos()
-  // const projetos = wpProjetos?.filter((p) => p.acf.ativo).slice(0, 4).map(wpToCard) ?? STATIC_PROJETOS
-  const projetos = STATIC_PROJETOS
+  const { data: wpProjetos } = useProjetos()
+  const projetos =
+    wpProjetos?.filter((p) => p.acf.ativo).slice(0, 4).map(wpToCard) ?? STATIC_PROJETOS
 
   return (
     <section className={styles.section}>

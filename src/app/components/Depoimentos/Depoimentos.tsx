@@ -1,9 +1,7 @@
 import { motion } from 'motion/react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
+import { useDepoimentos } from '../../../hooks/useDepoimentos'
 import styles from './Depoimentos.module.css'
-
-// TODO: descomentar quando integração com WordPress estiver disponível
-// import { useDepoimentos } from '../../../hooks/useDepoimentos'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -27,17 +25,17 @@ const STATIC_DEPOIMENTOS = [
 ]
 
 export function Depoimentos() {
-  // TODO: descomentar quando integração com WordPress estiver disponível
-  // const { data: wpDepoimentos } = useDepoimentos()
-  // const depoimentos = wpDepoimentos?.filter((d) => d.acf.ativo).map((d) => ({
-  //   texto: d.acf.texto,
-  //   nome: d.acf.nome,
-  //   papel: d.acf.papel,
-  //   inicial: d.acf.nome.charAt(0).toUpperCase(),
-  //   cor: d.acf.cor,
-  // })) ?? STATIC_DEPOIMENTOS
-
-  const depoimentos = STATIC_DEPOIMENTOS
+  const { data: wpDepoimentos } = useDepoimentos()
+  const depoimentos =
+    wpDepoimentos
+      ?.filter((d) => d.acf.ativo)
+      .map((d) => ({
+        texto: d.acf.texto,
+        nome: d.acf.nome,
+        papel: d.acf.papel,
+        inicial: d.acf.nome.charAt(0).toUpperCase(),
+        cor: d.acf.cor,
+      })) ?? STATIC_DEPOIMENTOS
 
   return (
     <section className={styles.section}>

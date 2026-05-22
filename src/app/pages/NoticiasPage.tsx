@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import { motion } from 'motion/react'
 import { ImageWithFallback } from '../components/ImageWithFallback/ImageWithFallback'
+import { useNoticias } from '../../hooks/useNoticias'
 import { NOTICIAS } from '../data/noticias'
 import type { Noticia } from '../data/noticias'
 
@@ -12,9 +13,11 @@ const LOAD_MORE_COUNT = 3
 
 export function NoticiasPage() {
   const [visivel, setVisivel] = useState(INITIAL_COUNT)
+  const { data: wpNoticias } = useNoticias()
+  const todasNoticias = wpNoticias ?? NOTICIAS
 
-  const noticiasMostradas = NOTICIAS.slice(0, visivel)
-  const temMais = visivel < NOTICIAS.length
+  const noticiasMostradas = todasNoticias.slice(0, visivel)
+  const temMais = visivel < todasNoticias.length
 
   return (
     <>
