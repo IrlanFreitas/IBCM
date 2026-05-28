@@ -5,7 +5,8 @@ import styles from './Navigation.module.css'
 
 const links = [
   { label: 'Quem somos', to: '/quem-somos' },
-  { label: 'Projetos e causas', to: '/projetos' },
+  { label: 'Projetos', to: '/projetos' },
+  { label: 'Causas', to: '/causas' },
   { label: 'Notícias', to: '/noticias' },
   { label: 'Transparência', to: '/transparencia' },
 ]

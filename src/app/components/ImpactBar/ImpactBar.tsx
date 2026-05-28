@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { motion } from 'motion/react'
+import { CalendarDays, GraduationCap, Baby, Home } from 'lucide-react'
 import { useOpcoes } from '../../../hooks/useOpcoes'
 import styles from './ImpactBar.module.css'
 
@@ -17,10 +18,10 @@ interface ImpactBarProps {
 const ease = [0.22, 1, 0.36, 1] as const
 
 const HOME_STATS: ImpactStat[] = [
-  { numero: '+38', label: 'Anos de atuação', icon: null },
-  { numero: '+15.000', label: 'Jovens empregados', icon: null },
-  { numero: '+2.400', label: 'Crianças atendidas', icon: null },
-  { numero: '29', label: 'Casas de apoio', icon: null },
+  { numero: '+38', label: 'Anos de atuação', icon: <CalendarDays size={28} strokeWidth={1.5} /> },
+  { numero: '+15.000', label: 'Jovens empregados', icon: <GraduationCap size={28} strokeWidth={1.5} /> },
+  { numero: '+2.400', label: 'Crianças atendidas', icon: <Baby size={28} strokeWidth={1.5} /> },
+  { numero: '29', label: 'Casas de apoio', icon: <Home size={28} strokeWidth={1.5} /> },
 ]
 
 export function ImpactBar({ variant = 'home', stats: statsProp }: ImpactBarProps) {

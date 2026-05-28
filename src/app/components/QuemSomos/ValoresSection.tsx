@@ -3,9 +3,6 @@ import { HeartHandshake, Scale, Search, Sprout } from 'lucide-react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
 import styles from './ValoresSection.module.css'
 
-// TODO: quando WP estiver pronto, buscar de custom post type `valor_ibcm`
-// endpoint: /wp-json/wp/v2/valor_ibcm?per_page=4&order=asc&orderby=menu_order
-
 const ease = [0.22, 1, 0.36, 1] as const
 
 const STATIC_VALORES = [
@@ -37,8 +34,6 @@ const STATIC_VALORES = [
 
 export function ValoresSection() {
   const valores = STATIC_VALORES
-  // TODO: const { data: wpValores } = useValores()
-  // const valores = wpValores?.map(...) ?? STATIC_VALORES
 
   return (
     <section className={styles.section}>

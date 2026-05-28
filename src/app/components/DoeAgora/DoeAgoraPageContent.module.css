@@ -5,6 +5,167 @@
   padding: clamp(40px, 6vw, 80px) clamp(16px, 5vw, 60px);
 }
 
+/* ── QR Code Pix ───────────────────────── */
+
+.pixWrapper {
+  max-width: 1200px;
+  margin: 0 auto clamp(32px, 5vw, 56px);
+}
+
+.pixCard {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  background: var(--white);
+  border: 1px solid var(--ink-10);
+  border-radius: var(--radius-xl);
+  padding: clamp(24px, 3.5vw, 40px);
+}
+
+.pixInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pixEyebrow {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+.pixTitle {
+  font-family: var(--font-garamond);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.pixDesc {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-70);
+  margin: 0;
+  max-width: 420px;
+}
+
+.pixMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 14px 16px;
+  background: var(--creme);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ink-6);
+}
+
+.pixMetaRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pixMetaLabel {
+  font-family: var(--font-jakarta);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.pixMetaValue {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.pixQrCol {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pixQrImg {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ink-10);
+  padding: 8px;
+  background: var(--white);
+  display: block;
+}
+
+.pixQrLabel {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  color: var(--ink-40);
+  text-align: center;
+}
+
+/* Divisor "ou" */
+
+.pixDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.pixDividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--ink-12);
+}
+
+.pixDividerText {
+  font-family: var(--font-jakarta);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  white-space: nowrap;
+}
+
+/* Responsivo: QR code vai abaixo do texto em mobile */
+
+@media (max-width: 640px) {
+  .pixCard {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pixDesc {
+    max-width: 100%;
+  }
+
+  .pixMetaRow {
+    justify-content: center;
+  }
+
+  .pixMetaLabel {
+    min-width: unset;
+  }
+}
+
 /* ── Layout 2 colunas ──────────────────── */
 
 .layout {

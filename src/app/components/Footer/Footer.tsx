@@ -14,10 +14,16 @@ const colunas = [
   {
     titulo: "Projetos",
     links: [
-      { label: "HIV/AIDS — Prevenção", to: "/projetos" },
       { label: "Creche IBCM", to: "/projetos" },
       { label: "CPDD — Casarão", to: "/projetos" },
-      { label: "Ver todos", to: "/projetos" },
+      { label: "Adolescente Aprendiz", to: "/projetos" },
+    ],
+  },
+  {
+    titulo: "Causas",
+    links: [
+      { label: "HIV/AIDS — Prevenção", to: "/causas" },
+      { label: "Casas de Apoio", to: "/causas" },
     ],
   },
   {

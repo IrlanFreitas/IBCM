@@ -64,6 +64,55 @@ export function DoeAgoraPageContent() {
 
   return (
     <section className={styles.section}>
+
+      {/* ── QR Code Pix ── */}
+      <div className={styles.pixWrapper}>
+        <div className={styles.pixCard}>
+
+          <div className={styles.pixInfo}>
+            <span className={styles.pixEyebrow}>Pix · doação direta</span>
+            <p className={styles.pixTitle}>Doe agora pelo Pix</p>
+            <p className={styles.pixDesc}>
+              Escaneie o código com o app do seu banco e confirme o valor que desejar.
+              Sua doação chega integralmente ao IBCM.
+            </p>
+            <div className={styles.pixMeta}>
+              <div className={styles.pixMetaRow}>
+                <span className={styles.pixMetaLabel}>Beneficiário</span>
+                <span className={styles.pixMetaValue}>Instituto Beneficente Conceição Macedo</span>
+              </div>
+              <div className={styles.pixMetaRow}>
+                <span className={styles.pixMetaLabel}>CNPJ</span>
+                <span className={styles.pixMetaValue}>00.584.568/0001-05</span>
+              </div>
+              <div className={styles.pixMetaRow}>
+                <span className={styles.pixMetaLabel}>Chave Pix</span>
+                <span className={styles.pixMetaValue}>ibcm33@terra.com.br</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.pixQrCol}>
+            <img
+              src="https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-hostgator-brasil-v1-0-9%2F669%2F595669%2FMWRYHBol%2F6aeb5d4994f142218e4bd5f4d6b74034&methods=resize%2C1500%2C5000"
+              alt="QR Code para doação via Pix ao IBCM"
+              className={styles.pixQrImg}
+              width={180}
+              height={180}
+            />
+            <span className={styles.pixQrLabel}>Aponte a câmera do celular</span>
+          </div>
+
+        </div>
+
+        {/* Divisor */}
+        <div className={styles.pixDivider}>
+          <div className={styles.pixDividerLine} />
+          <span className={styles.pixDividerText}>ou escolha um valor abaixo</span>
+          <div className={styles.pixDividerLine} />
+        </div>
+      </div>
+
       <div className={styles.layout}>
 
         {/* ── Coluna do formulário ── */}

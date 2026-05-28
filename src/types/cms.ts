@@ -20,7 +20,28 @@ export interface WPProjeto {
     descricaocurta: string
     descricaocompleta: string
     impacto: string
-    bullets: Array<{ texto: string }>
+    bullets: string
+    imagemprincipal: { url: string; alt: string } | null
+    numeros: string
+    ativo: boolean
+  }
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string; alt_text: string }>
+  }
+}
+
+// Mesmo shape que WPProjeto — custom post type separado no WordPress (causa)
+export interface WPCausa {
+  id: number
+  slug: string
+  title: { rendered: string }
+  acf: {
+    tag: string
+    tagcolor: string
+    descricaocurta: string
+    descricaocompleta: string
+    impacto: string
+    bullets: string
     imagemprincipal: { url: string; alt: string } | null
     numeros: string
     ativo: boolean
@@ -63,10 +84,21 @@ export interface WPRelatorio {
   }
 }
 
+export interface WPHeroSlide {
+  tipo: 'imagem' | 'youtube' | 'video'
+  imagem: { url: string; alt: string } | null
+  youtube_id: string
+  video_url: string
+  link: string
+  link_label: string
+  ativo: boolean
+}
+
 export interface WPOpcoes {
   hero_titulo: string
   hero_subtitulo: string
   hero_imagem: { url: string } | null
+  hero_slides?: WPHeroSlide[]
   stats: Array<{
     icon: null
     numero: string

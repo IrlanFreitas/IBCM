@@ -7,25 +7,6 @@ import type { WPProjeto } from '../../types/cms'
 
 const STATIC_PROJETOS: Projeto[] = [
   {
-    titulo: 'HIV/AIDS — Prevenção e acolhimento',
-    tag: 'Saúde',
-    tagColor: 'var(--terra)',
-    cor: 'var(--terra)',
-    image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&auto=format&fit=crop&q=80',
-    descricao:
-      'Desde 1986, é a primeira e principal missão do IBCM. Oferecemos testagem rápida, distribuição de preservativos, orientação sobre PrEP e PEP, acompanhamento terapêutico e suporte emocional para pessoas vivendo com HIV/AIDS.',
-    impacto:
-      'Criado em 1986, atendemos mais de 60 mil pessoas. Hoje realizamos uma média de 660 testagens por mês e distribuímos 15 mil preservativos mensalmente.',
-    bullets: [
-      'Testagem rápida gratuita e sigilosa',
-      'Distribuição de insumos de prevenção (preservativos, gel lubrificante)',
-      'Orientação sobre PrEP (Profilaxia Pré-Exposição) e PEP (Profilaxia Pós-Exposição)',
-      'Grupos de apoio e suporte psicológico',
-      'Acompanhamento de adesão ao tratamento antirretroviral',
-      'Ronda Noturna: atendimento a profissionais do sexo e população de rua',
-    ],
-  },
-  {
     titulo: 'Creche IBCM',
     tag: 'Educação',
     tagColor: 'var(--musgo)',
@@ -84,31 +65,12 @@ const STATIC_PROJETOS: Projeto[] = [
       'Conexão com oportunidades de emprego efetivo',
     ],
   },
-  {
-    titulo: 'Casas de Apoio',
-    tag: 'Acolhimento',
-    tagColor: 'var(--terra)',
-    cor: 'var(--terra)',
-    image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1200&auto=format&fit=crop&q=80',
-    badge: '29 casas · Salvador',
-    descricao:
-      'Rede de moradia temporária e permanente para pessoas vivendo com HIV/AIDS e suas famílias em situação de vulnerabilidade. Oferecemos abrigo seguro, alimentação, cuidados de saúde e acompanhamento para a reintegração social.',
-    impacto:
-      'São 29 casas ativas em Salvador. Cada casa acolhe em média 8 pessoas, garantindo moradia digna, alimentação e cuidados diários para quem mais precisa.',
-    bullets: [
-      'Moradia temporária e permanente em ambiente seguro',
-      'Três refeições diárias balanceadas',
-      'Distribuição e acompanhamento de medicação ARV',
-      'Suporte jurídico para regularização de documentos',
-      'Preparação para a vida independente e autônoma',
-      'Visitas domiciliares e acompanhamento contínuo',
-    ],
-  },
 ]
 
 function wpToProjeto(wp: WPProjeto): Projeto {
   const media = wp._embedded?.['wp:featuredmedia']?.[0]
   const image = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
+
   return {
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
@@ -118,7 +80,7 @@ function wpToProjeto(wp: WPProjeto): Projeto {
     badge: wp.acf.numeros || undefined,
     descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
     impacto: wp.acf.impacto ?? '',
-    bullets: (wp.acf.bullets ?? []).map((b) => b.texto),
+    bullets: (wp.acf.bullets ?? '').split('\n').map(line => line.trim()),
   }
 }
 
@@ -129,19 +91,19 @@ export function ProjetosPage() {
   return (
     <>
       <PageBanner
-        eyebrow="Causas e projetos"
-        eyebrowColor="var(--ocre)"
+        eyebrow="Projetos"
+        eyebrowColor="var(--musgo)"
         title={
           <>
-            Cuidado que transforma,{' '}
+            Programas que constroem{' '}
             <br />
-            <em style={{ color: 'var(--ocre)', fontStyle: 'normal' }}>
-              impacto que dura
+            <em style={{ color: 'var(--musgo)', fontStyle: 'normal' }}>
+              autonomia e futuro
             </em>
           </>
         }
-        lead="Cada projeto da IBCM combina acolhimento imediato com transformação de longo prazo. Não fazemos assistencialismo, aqui construímos autonomia, dignidade e futuro."
-        ariaLabel="Título da página Projetos e Causas"
+        lead="Nossos projetos transformam vidas por meio de educação, qualificação profissional e inclusão. Cada programa combina atendimento imediato com desenvolvimento de longo prazo."
+        ariaLabel="Título da página Projetos"
       />
 
       <ProjetosList projetos={projetos} />

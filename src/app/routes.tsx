@@ -9,6 +9,9 @@ const QuemSomosPage = lazy(() =>
 const ProjetosPage = lazy(() =>
   import('./pages/ProjetosPage').then((m) => ({ default: m.ProjetosPage }))
 )
+const CausasPage = lazy(() =>
+  import('./pages/CausasPage').then((m) => ({ default: m.CausasPage }))
+)
 const DoeAgoraPage = lazy(() =>
   import('./pages/DoeAgoraPage').then((m) => ({ default: m.DoeAgoraPage }))
 )
@@ -62,6 +65,7 @@ export const routes: RouteObject[] = [
       { path: '/', element: withSuspense(Home) },
       { path: '/quem-somos', element: withSuspense(QuemSomosPage) },
       { path: '/projetos', element: withSuspense(ProjetosPage) },
+      { path: '/causas', element: withSuspense(CausasPage) },
       { path: '/doe-agora', element: withSuspense(DoeAgoraPage) },
       { path: '/noticias', element: withSuspense(NoticiasPage) },
       { path: '/noticias/:slug', element: withSuspense(NoticiaDetalhePage) },
