@@ -1,11 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#C1440E"/>
-  <text
-    x="32" y="47"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="38"
-    font-weight="600"
-    text-anchor="middle"
-    fill="white"
-  >I</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 63 77" fill="#C1440E">
+  <!-- Figura esquerda (adulto) -->
+  <circle cx="13" cy="16" r="7.5"/>
+  <path d="M3 58 Q3 30 10 25 Q13 23 16 23 Q22 23 23 30 L27 58 Z"/>
+
+  <!-- Figura central (adulto mais alto) -->
+  <circle cx="36" cy="8" r="8.5"/>
+  <path d="M23 62 Q22 28 36 18 Q46 18 47 30 L50 62 Z"/>
+
+  <!-- Figura direita (criança / menor) -->
+  <circle cx="51" cy="24" r="6"/>
+  <path d="M47 62 Q46 36 51 30 Q57 30 60 38 L63 62 Z"/>
+
+  <!-- Base unificada -->
+  <path d="M2 58 L2 64 Q2 69 7 70 L7 74 Q7 77 12 77 L12 73 Q12 70 18 70
+           L22 70 L22 73 Q22 77 27 77 L27 70 Q40 70 40 73 Q40 77 45 77
+           L45 70 Q51 70 51 73 Q51 77 57 77 L57 70 Q62 70 62 65 L62 58 Z"/>
 </svg>
