@@ -38,21 +38,14 @@ export function Navigation() {
         <div className={styles.headerInner}>
           {/* Logo desktop */}
           <Link to="/" className={styles.logoDesktop}>
-            <img src="/favicon.svg" alt="Ícone IBCM" style={{ height: 38, width: 'auto' }} />
-            <span className={styles.logoText}>
-              <strong className={styles.logoName}>IBCM</strong>
-              <span className={styles.logoSub}>Instituto Beneficente Conceição Macedo</span>
-            </span>
+            <img style={{ width: 120 }} src="/marca/Logo_IBCM.png" alt="Logo IBCM" />
           </Link>
 
           {/* Logo mobile */}
-          <Link to="/" className={styles.logoMobile}>
-            <img src="/favicon.svg" alt="Ícone IBCM" style={{ height: 32, width: 'auto' }} />
-            <span className={styles.logoMobileText}>
-              <h1 className={styles.logoMobileTitle}>IBCM</h1>
-              <p className={styles.logoMobileSubtitle}>Instituto Beneficente Conceição Macedo</p>
-            </span>
-          </Link>
+          <span className={styles.logoMobile}>
+            <h1 className={styles.logoMobileTitle}>IBCM</h1>
+            <p className={styles.logoMobileSubtitle}>Instituto Beneficente Conceição Macedo</p>
+          </span>
 
           {/* Links desktop */}
           <div className={styles.linksDesktop}>
