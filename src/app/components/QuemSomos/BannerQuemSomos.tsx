@@ -8,7 +8,7 @@ export function BannerQuemSomos() {
       title={
         <>
           Uma história de{' '}
-          <em style={{ color: 'var(--ocre)', fontStyle: 'italic' }}>resistência</em>,{' '}
+          <span style={{ color: 'var(--ocre)' }}>resistência</span>,{' '}
           dignidade e cuidado
         </>
       }

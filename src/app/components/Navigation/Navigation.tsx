@@ -38,7 +38,7 @@ export function Navigation() {
         <div className={styles.headerInner}>
           {/* Logo desktop */}
           <Link to="/" className={styles.logoDesktop}>
-            <img style={{ width: 120 }} src="/marca/Logo_IBCM.png" alt="Logo IBCM" />
+            <img style={{ width: 120 }} src="/marca/LogoIBCM.png" alt="Logo IBCM" />
           </Link>
 
           {/* Logo mobile */}
@@ -53,15 +53,7 @@ export function Navigation() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={styles.navLink}
-                style={{
-                  color: location.pathname === link.to ? 'var(--terra)' : 'var(--ink-70)',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ink)')}
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    location.pathname === link.to ? 'var(--terra)' : 'var(--ink-70)')
-                }
+                className={`${styles.navLink} ${location.pathname === link.to ? styles.navLinkActive : ''}`}
               >
                 {link.label}
               </Link>
@@ -113,10 +105,7 @@ export function Navigation() {
             <Link
               key={link.to}
               to={link.to}
-              className={styles.drawerLink}
-              style={{
-                color: location.pathname === link.to ? 'var(--terra)' : 'var(--ink)',
-              }}
+              className={`${styles.drawerLink} ${location.pathname === link.to ? styles.drawerLinkActive : ''}`}
             >
               {link.label}
             </Link>

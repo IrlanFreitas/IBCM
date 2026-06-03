@@ -23,7 +23,7 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(28px, 5vw, 44px);
   font-weight: 500;
   line-height: 1.15;
@@ -100,7 +100,7 @@
 }
 
 .cardTitle {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(18px, 3vw, 21px);
   font-weight: 500;
   line-height: 1.25;

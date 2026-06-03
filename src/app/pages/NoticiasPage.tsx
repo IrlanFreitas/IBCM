@@ -35,7 +35,7 @@ export function NoticiasPage() {
         >
           <h1
             style={{
-              fontFamily: 'var(--font-garamond)',
+              fontFamily: 'var(--font-nunito)',
               fontSize: 'clamp(48px, 10vw, 82px)',
               fontWeight: 500,
               fontStyle: 'italic',
@@ -150,7 +150,7 @@ function NoticiaCard({ noticia, index }: { noticia: Noticia; index: number }) {
         {/* Título */}
         <h2
           style={{
-            fontFamily: 'var(--font-garamond)',
+            fontFamily: 'var(--font-nunito)',
             fontSize: 'clamp(17px, 2.5vw, 20px)',
             fontWeight: 500,
             lineHeight: 1.35,

@@ -50,7 +50,7 @@ export function Depoimentos() {
         <Eyebrow color="var(--ocre)">Impacto Real</Eyebrow>
         <h2 className={styles.title}>
           Vidas transformadas,{' '}
-          <em className={styles.titleHighlight}>histórias reais</em>
+          <span className={styles.titleHighlight}>histórias reais</span>
         </h2>
         <p className={styles.subtitle}>
           O que verdadeiramente importa: pessoas reais, histórias de dignidade

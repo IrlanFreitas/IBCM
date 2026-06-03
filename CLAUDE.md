@@ -94,7 +94,7 @@ Site institucional da IBCM (Instituto Beneficente Conceição Macedo), ONG de Sa
 ### Tipografia
 
 ```css
---font-garamond: 'EB Garamond', serif;    /* Títulos */
+--font-nunito: 'EB Garamond', serif;    /* Títulos */
 --font-jakarta:  'Plus Jakarta Sans', sans-serif;  /* Corpo e UI */
 ```
 
@@ -276,10 +276,10 @@ Localizado em `/src/app/components/figma/ImageWithFallback.tsx`. Usar em todas a
     <div style={{ fontFamily: 'var(--font-jakarta)', fontSize: '10px', fontWeight: 600, color: tagColor }}>
       {tag}
     </div>
-    <h3 style={{ fontFamily: 'var(--font-garamond)', fontSize: 'clamp(18px, 3vw, 21px)', color: 'var(--ink)' }}>
+    <h3 style={{ fontFamily: 'var(--font-nunito)', fontSize: 'clamp(18px, 3vw, 21px)', color: 'var(--ink)' }}>
       {titulo}
     </h3>
-    <p style={{ fontFamily: 'var(--font-garamond)', fontSize: '15px', color: 'var(--ink-70)' }}>
+    <p style={{ fontFamily: 'var(--font-nunito)', fontSize: '15px', color: 'var(--ink-70)' }}>
       {descricao}
     </p>
   </div>

@@ -12,7 +12,7 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(28px, 5vw, 44px);
   font-weight: 500;
   color: var(--white);
@@ -21,8 +21,7 @@
 }
 
 .titleHighlight {
-  color: #FFB742;
-  font-style: italic;
+  color: #FFB742; 
 }
 
 .subtitle {
@@ -58,14 +57,14 @@
 /* ── Aspas decorativas ─────────────────── */
 
 .quote {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 40px;
   line-height: 0.8;
   user-select: none;
 }
 
 .text {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(16px, 2vw, 18px);
   font-style: italic;
   line-height: 1.7;
@@ -92,7 +91,7 @@
 }
 
 .avatarInitial {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 18px;
   font-weight: 500;
   color: var(--white);

@@ -32,7 +32,7 @@ export function NoticiaDetalhePage() {
       >
         <p
           style={{
-            fontFamily: 'var(--font-garamond)',
+            fontFamily: 'var(--font-nunito)',
             fontSize: 'clamp(24px, 4vw, 36px)',
             color: 'var(--ink)',
           }}
@@ -182,7 +182,7 @@ export function NoticiaDetalhePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
           style={{
-            fontFamily: 'var(--font-garamond)',
+            fontFamily: 'var(--font-nunito)',
             fontSize: 'clamp(28px, 5vw, 48px)',
             fontWeight: 500,
             lineHeight: 1.15,

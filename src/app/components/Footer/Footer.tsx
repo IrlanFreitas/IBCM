@@ -69,7 +69,7 @@ export function Footer() {
       <div className={styles.top}>
         <img
           style={{ width: 50, height: "100%" }}
-          src="/marca/ibcm_rodape.png"
+          src="/marca/logo_ibcm.png"
           alt="Logo IBCM"
         />
         <Link to="/" className={styles.brandLink}>

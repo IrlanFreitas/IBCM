@@ -108,9 +108,9 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(40px, 11vw, 65px);
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1.05;
   color: var(--white);
   max-width: 720px;
@@ -251,7 +251,7 @@
 
 .dotsBar {
   position: absolute;
-  bottom: 28px;
+  bottom: 43px;
   right: clamp(16px, 5vw, 60px);
   display: flex;
   align-items: center;
@@ -260,10 +260,10 @@
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
   border: none;
   cursor: pointer;
   padding: 0;
@@ -271,6 +271,6 @@
 }
 
 .dotActive {
-  width: 22px;
+  width: 36px;
   background: var(--white);
 }

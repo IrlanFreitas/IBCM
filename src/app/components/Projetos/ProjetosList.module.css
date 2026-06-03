@@ -126,7 +126,7 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(24px, 3.5vw, 36px);
   font-weight: 500;
   line-height: 1.15;

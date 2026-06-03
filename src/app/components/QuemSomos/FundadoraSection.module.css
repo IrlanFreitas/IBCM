@@ -44,7 +44,7 @@
 }
 
 .name {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(26px, 4vw, 40px);
   font-weight: 500;
   color: var(--ink);
@@ -53,7 +53,7 @@
 }
 
 .bio {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(16px, 2.2vw, 18px);
   line-height: 1.8;
   color: var(--ink-70);
@@ -68,7 +68,7 @@
 }
 
 .quoteText {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(16px, 2.2vw, 19px);
   line-height: 1.7;
   color: var(--terra-dark);

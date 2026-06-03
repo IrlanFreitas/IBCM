@@ -21,7 +21,7 @@ export function HeroQuemSomos() {
           <Eyebrow color="var(--terra)">Quem somos</Eyebrow>
           <h1 className={styles.title}>
             Uma história de{' '}
-            <em className={styles.titleAccent}>resistência</em>,{' '}
+            <span className={styles.titleAccent}>resistência</span>,{' '}
             dignidade e cuidado
           </h1>
           <p className={styles.lead}>

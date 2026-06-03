@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router";
 import { ArrowRight, Volume2, VolumeX } from "lucide-react";
-import { useOpcoes } from "../../../hooks/useOpcoes";
-import type { WPHeroSlide } from "../../../types/cms";
+import { useCampanhas } from "../../../hooks/useCampanhas";
+import type { WPCampanha } from "../../../types/cms";
 import styles from "./Hero.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -32,7 +32,7 @@ const STATIC_SLIDES: HeroSlide[] = [
   {
     // Vídeo YouTube: substitua o ID pelo vídeo da campanha desejada
     tipo: "youtube",
-    youtubeId: "jNQXAC9IVRw",
+    youtubeId: "1-sXoLc6l34",
     link: "/doe-agora",
     linkLabel: "Apoie essa causa",
   },
@@ -44,15 +44,15 @@ const STATIC_SLIDES: HeroSlide[] = [
   },
 ];
 
-function wpToSlide(wp: WPHeroSlide): HeroSlide {
+function wpToSlide(wp: WPCampanha): HeroSlide {
   return {
-    tipo: wp.tipo,
-    imagem: wp.imagem?.url,
-    imagemAlt: wp.imagem?.alt,
-    youtubeId: wp.youtube_id || undefined,
-    videoUrl: wp.video_url || undefined,
-    link: wp.link || undefined,
-    linkLabel: wp.link_label || "Saiba mais",
+    tipo: wp.acf.tipo,
+    imagem: wp.acf.imagem?.url,
+    imagemAlt: wp.acf.imagem?.alt,
+    youtubeId: wp.acf.youtube_id || undefined,
+    videoUrl: wp.acf.video_url || undefined,
+    link: wp.acf.link || undefined,
+    linkLabel: wp.acf.link_label || "Saiba mais",
   };
 }
 
@@ -138,12 +138,16 @@ function SlideMedia({
 }
 
 export function Hero() {
-  const { data: opcoes } = useOpcoes();
+  const { data: campanhas } = useCampanhas();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(true);
+  const touchStartX = useRef<number | null>(null);
 
-  const rawSlides = opcoes?.hero_slides?.filter((s) => s.ativo) ?? [];
+  console.log(campanhas);
+  
+
+  const rawSlides = campanhas?.filter((c) => c.acf.ativo) ?? [];
   const slides: HeroSlide[] =
     rawSlides.length > 0
       ? rawSlides.slice(0, MAX_SLIDES).map(wpToSlide)
@@ -152,6 +156,24 @@ export function Hero() {
   const next = useCallback(() => {
     setCurrent((i) => (i + 1) % slides.length);
   }, [slides.length]);
+
+  const prev = useCallback(() => {
+    setCurrent((i) => (i - 1 + slides.length) % slides.length);
+  }, [slides.length]);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      if (delta > 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+  }, [next, prev]);
 
   useEffect(() => {
     if (paused || slides.length <= 1) return;
@@ -168,6 +190,8 @@ export function Hero() {
       className={styles.section}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Fundo em carrossel */}
       <AnimatePresence mode="sync">

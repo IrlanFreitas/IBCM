@@ -40,7 +40,7 @@
 }
 
 .pixTitle {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(24px, 4vw, 36px);
   font-weight: 500;
   color: var(--ink);
@@ -260,7 +260,7 @@
 }
 
 .valorBtn {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 20px;
   font-weight: 500;
   border-radius: var(--radius-md);
@@ -487,7 +487,7 @@
 }
 
 .statNumber {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 22px;
   font-weight: 500;
   color: var(--ink);

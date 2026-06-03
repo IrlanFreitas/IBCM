@@ -94,6 +94,41 @@ export interface WPHeroSlide {
   ativo: boolean
 }
 
+export interface WPMediaAttachment {
+  id: number
+  source_url: string
+  alt_text: string
+}
+
+// CPT "campanha" — slides gerenciados via WP Admin → Campanhas (Hero)
+export interface WPCampanha {
+  id: number
+  title: { rendered: string }
+  menu_order: number
+  acf: {
+    tipo: 'imagem' | 'youtube' | 'video'
+    imagem: { url: string; alt: string } | null
+    youtube_id: string
+    video_url: string
+    link: string
+    link_label: string
+    ativo: boolean
+  }
+}
+
+// Shape bruto do WP antes de resolver IDs de mídia
+export interface RawWPCampanha extends Omit<WPCampanha, 'acf'> {
+  acf: {
+    tipo: 'imagem' | 'youtube' | 'video'
+    imagem: number | { url: string; alt: string } | null | false
+    youtube_id: string
+    video_url: number | string | null | false
+    link: string
+    link_label: string
+    ativo: boolean
+  }
+}
+
 export interface WPOpcoes {
   hero_titulo: string
   hero_subtitulo: string

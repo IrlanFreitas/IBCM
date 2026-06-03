@@ -34,7 +34,7 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(28px, 5vw, 44px);
   font-weight: 400;
   color: var(--ink);
@@ -139,7 +139,7 @@
 }
 
 .valorBtn {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 22px;
   font-weight: 500;
   border-radius: var(--radius-md);

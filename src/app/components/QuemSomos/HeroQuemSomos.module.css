@@ -18,7 +18,7 @@
 }
 
 .title {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: clamp(36px, 7vw, 68px);
   font-weight: 500;
   line-height: 1.06;
@@ -29,7 +29,6 @@
 
 .titleAccent {
   color: var(--terra);
-  font-style: italic;
 }
 
 .lead {
@@ -74,7 +73,7 @@
 }
 
 .badgeYear {
-  font-family: var(--font-garamond);
+  font-family: var(--font-nunito);
   font-size: 28px;
   font-weight: 600;
   color: var(--terra);
