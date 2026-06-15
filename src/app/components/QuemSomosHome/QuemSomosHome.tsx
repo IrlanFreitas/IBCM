@@ -12,6 +12,7 @@ const STATIC_TEXTO =
   'Em 1986, Maria Conceição Macedo fundou o IBCM com um propósito simples e urgente: acolher quem a sociedade rejeitava. Numa época em que o estigma do HIV/AIDS isolava famílias inteiras, o Instituto abriu as portas para oferecer dignidade, cuidado e voz a quem mais precisava.'
 
 const STATIC_IMAGEM = '/imagens/gabrielbrito-0042.jpg'
+const STATIC_YOUTUBE = '1-sXoLc6l34'
 
 interface MidiaProps {
   tipo?: 'imagem' | 'youtube' | 'video'
@@ -22,7 +23,7 @@ interface MidiaProps {
   poster?: string
 }
 
-function MidiaBlock({ tipo = 'imagem', imagem, imagemAlt, youtubeId, videoUrl, poster }: MidiaProps) {
+function MidiaBlock({ tipo = 'youtube', imagem, imagemAlt, youtubeId, videoUrl, poster }: MidiaProps) {
   if (tipo === 'youtube' && youtubeId) {
     return (
       <iframe
@@ -67,10 +68,10 @@ export function QuemSomosHome() {
 
   const texto = opcoes?.texto_intro || STATIC_TEXTO
   const midiaConfig: MidiaProps = {
-    tipo: midia?.acf.tipo ?? 'imagem',
+    tipo: midia?.acf.tipo ?? 'youtube',
     imagem: midia?.acf.imagem?.url,
     imagemAlt: midia?.acf.imagem?.alt,
-    youtubeId: midia?.acf.youtube_id,
+    youtubeId: midia?.acf.youtube_id ?? STATIC_YOUTUBE,
     videoUrl: midia?.acf.video_url,
     poster: midia?.acf.poster?.url,
   }
