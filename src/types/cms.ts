@@ -172,3 +172,27 @@ export interface WPOpcoes {
     projeto: string
   }>
 }
+
+// CPT "quem_somos_midia" — endpoint: GET /wp-json/wp/v2/quem_somos_midia?status=publish&per_page=1
+// O frontend usa apenas o primeiro item publicado.
+export interface WPQuemSomosMidia {
+  id: number
+  title: { rendered: string }
+  acf: {
+    tipo: 'imagem' | 'youtube' | 'video'
+    imagem: { url: string; alt: string } | null
+    youtube_id: string
+    video_url: string
+    poster: { url: string; alt: string } | null
+  }
+}
+
+export interface RawWPQuemSomosMidia extends Omit<WPQuemSomosMidia, 'acf'> {
+  acf: {
+    tipo: 'imagem' | 'youtube' | 'video'
+    imagem: number | { url: string; alt: string } | null | false
+    youtube_id: string
+    video_url: number | string | null | false
+    poster: number | { url: string; alt: string } | null | false
+  }
+}

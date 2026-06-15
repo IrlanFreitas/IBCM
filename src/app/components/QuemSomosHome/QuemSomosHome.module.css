@@ -50,17 +50,21 @@
   gap: 10px;
 }
 
-/* ── Bloco de imagem ───────────────────── */
+/* ── Bloco de mídia (imagem / YouTube / vídeo) ─ */
 
-.imageBlock {
-  max-width: 560px;
-  width: 100%;
+.mediaBlock {
+  flex: 1;
+  min-width: 0;
 }
 
-.image {
-  height: 310px;
-  object-fit: cover;
+/* Elemento de mídia — cobre os três casos: <img>, <video>, <iframe> */
+.media {
+  display: block;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   object-position: 50% 30%;
   border-radius: var(--radius-xl);
+  border: none;
+  background: var(--ink-6);
 }
