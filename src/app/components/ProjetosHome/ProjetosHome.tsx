@@ -164,8 +164,7 @@ export function ProjetosHome() {
             <span className={styles.titleHighlight}>na prática</span>
           </h2>
           <p className={styles.subtitle}>
-            Projetos que combinam cuidado imediato com transformação de longo
-            prazo — todos integrados em um mesmo ecossistema de suporte.
+            Projetos que unem cuidado imediato e transformação de longo prazo na vida de quem mais precisa.
           </p>
         </div>
       </div>

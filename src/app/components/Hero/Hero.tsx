@@ -56,13 +56,7 @@ function wpToSlide(wp: WPCampanha): HeroSlide {
   };
 }
 
-function SlideMedia({
-  slide,
-  muted,
-}: {
-  slide: HeroSlide;
-  muted: boolean;
-}) {
+function SlideMedia({ slide, muted }: { slide: HeroSlide; muted: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -104,7 +98,7 @@ function SlideMedia({
                 func: muted ? "mute" : "unMute",
                 args: [],
               }),
-              "*"
+              "*",
             );
           }, 800);
         }}
@@ -145,7 +139,6 @@ export function Hero() {
   const touchStartX = useRef<number | null>(null);
 
   console.log(campanhas);
-  
 
   const rawSlides = campanhas?.filter((c) => c.acf.ativo) ?? [];
   const slides: HeroSlide[] =
@@ -165,15 +158,18 @@ export function Hero() {
     touchStartX.current = e.touches[0].clientX;
   }, []);
 
-  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const delta = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(delta) > 40) {
-      if (delta > 0) next();
-      else prev();
-    }
-    touchStartX.current = null;
-  }, [next, prev]);
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (touchStartX.current === null) return;
+      const delta = touchStartX.current - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 40) {
+        if (delta > 0) next();
+        else prev();
+      }
+      touchStartX.current = null;
+    },
+    [next, prev],
+  );
 
   useEffect(() => {
     if (paused || slides.length <= 1) return;
@@ -237,9 +233,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.2 }}
         >
-          38 anos <br />
-          cuidando de <br />
-          <span className={styles.titleHighlight}>quem precisa</span>
+          <span className={styles.titleHighlight}>Solidariedade sim.</span>
+          <br />
+          Preconceito, não.
         </motion.h1>
 
         <motion.p
@@ -248,8 +244,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.38 }}
         >
-          Acolhimento, moradia, educação e defesa de direitos para pessoas que
-          vivem com HIV/AIDS e grupos historicamente marginalizados.
+          Há 40 anos, a IBCM acolhe, protege e transforma a vida de crianças,
+          mulheres e famílias em situação de vulnerabilidade, com atuação
+          histórica no cuidado às pessoas que vivem e convivem com HIV.
         </motion.p>
 
         <motion.div
@@ -262,7 +259,7 @@ export function Hero() {
             Faça uma doação
           </Link>
           <Link to="/quem-somos" className={styles.ctaSecondary}>
-            Conheça o IBCM
+            Conheça a IBCM
             <ArrowRight size={16} />
           </Link>
         </motion.div>

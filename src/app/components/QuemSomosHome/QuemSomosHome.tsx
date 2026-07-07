@@ -63,10 +63,8 @@ function MidiaBlock({ tipo = 'youtube', imagem, imagemAlt, youtubeId, videoUrl, 
 }
 
 export function QuemSomosHome() {
-  const { data: opcoes } = useOpcoes()
   const { data: midia } = useQuemSomosMidia()
 
-  const texto = opcoes?.texto_intro || STATIC_TEXTO
   const midiaConfig: MidiaProps = {
     tipo: midia?.acf.tipo ?? 'youtube',
     imagem: midia?.acf.imagem?.url,
@@ -94,7 +92,7 @@ export function QuemSomosHome() {
           e cuidado
         </h2>
 
-        <p className={styles.body}>{texto}</p>
+        <p className={styles.body}>{STATIC_TEXTO}</p>
 
         <Link to="/quem-somos" className={styles.link}>
           Conheça nossa história completa

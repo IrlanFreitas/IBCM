@@ -74,12 +74,13 @@ export function DoeAgora() {
             Doe Agora
           </div>
           <h2 className={styles.title}>
-            Sua doação transforma{" "}
-            <span className={styles.titleHighlight}>vidas</span>
+            Sua doação{"  "}
+            <span className={styles.titleHighlight}>salva vidas</span> todos os
+            dias
           </h2>
           <p className={styles.subtitle}>
-            Cada contribuição vai diretamente para os nossos <br />
-            projetos em Salvador.
+            Cada contribuição fortalece o cuidado, a alimentação, a educação e a
+            proteção de quem mais precisa, em Salvador.
           </p>
         </motion.div>
 
