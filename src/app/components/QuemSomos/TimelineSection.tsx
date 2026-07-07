@@ -39,8 +39,8 @@ export function TimelineSection() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.7, ease }}
         >
-          <Eyebrow color="var(--terra)">Nossa trajetória</Eyebrow>
-          <h2 className={styles.title}>38 anos transformando vidas</h2>
+          <Eyebrow color="var(--terra)">Linha do tempo</Eyebrow>
+          <h2 className={styles.title}>40 anos transformando vidas</h2>
         </motion.header>
 
         <ol className={styles.list}>

@@ -1,7 +1,12 @@
 import { Users, Heart, Building2, Award } from 'lucide-react'
 import { BannerQuemSomos } from '../components/QuemSomos/BannerQuemSomos'
 import { FundadoraSection } from '../components/QuemSomos/FundadoraSection'
+import { TrajetoriaSection } from '../components/QuemSomos/TrajetoriaSection'
 import { TimelineSection } from '../components/QuemSomos/TimelineSection'
+import { QuemFazSection } from '../components/QuemSomos/QuemFazSection'
+import { GoverancaSection } from '../components/QuemSomos/GoverancaSection'
+import { MissaoSection } from '../components/QuemSomos/MissaoSection'
+import { ReconhecimentoSection } from '../components/QuemSomos/ReconhecimentoSection'
 import { GaleriaSection } from '../components/QuemSomos/GaleriaSection'
 import { ValoresSection } from '../components/QuemSomos/ValoresSection'
 import { ImpactBar, type ImpactStat } from '../components/ImpactBar/ImpactBar'
@@ -20,10 +25,15 @@ export function QuemSomosPage() {
     <main>
       <BannerQuemSomos />
       <FundadoraSection />
+      <TrajetoriaSection />
       <TimelineSection />
-      <GaleriaSection />
+      <QuemFazSection />
+      <GoverancaSection />
+      <MissaoSection />
+      <ReconhecimentoSection />
+      {/* <GaleriaSection />
       <ImpactBar variant="quem-somos" stats={QS_STATS} />
-      <ValoresSection />
+      <ValoresSection /> */}
     </main>
   )
 }

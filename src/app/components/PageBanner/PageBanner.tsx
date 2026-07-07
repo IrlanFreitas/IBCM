@@ -1,24 +1,24 @@
-import { motion } from 'motion/react'
-import { Eyebrow } from '../Eyebrow/Eyebrow'
-import styles from './PageBanner.module.css'
+import { motion } from "motion/react";
+import { Eyebrow } from "../Eyebrow/Eyebrow";
+import styles from "./PageBanner.module.css";
 
-const ease = [0.22, 1, 0.36, 1] as const
+const ease = [0.22, 1, 0.36, 1] as const;
 
 interface PageBannerProps {
-  eyebrow: string
-  eyebrowColor?: string
-  title: React.ReactNode
-  lead: string
-  ariaLabel?: string
-  background?: string
-  centered?: boolean
-  titleColor?: string
-  leadColor?: string
+  eyebrow: string;
+  eyebrowColor?: string;
+  title: React.ReactNode;
+  lead: string | React.ReactNode;
+  ariaLabel?: string;
+  background?: string;
+  centered?: boolean;
+  titleColor?: string;
+  leadColor?: string;
 }
 
 export function PageBanner({
   eyebrow,
-  eyebrowColor = 'var(--ocre)',
+  eyebrowColor = "var(--ocre)",
   title,
   lead,
   ariaLabel,
@@ -33,7 +33,9 @@ export function PageBanner({
       aria-label={ariaLabel}
       style={background ? { background } : undefined}
     >
-      <div className={`${styles.container}${centered ? ` ${styles.containerCentered}` : ''}`}>
+      <div
+        className={`${styles.container}${centered ? ` ${styles.containerCentered}` : ""}`}
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,5 +65,5 @@ export function PageBanner({
         </motion.p>
       </div>
     </section>
-  )
+  );
 }

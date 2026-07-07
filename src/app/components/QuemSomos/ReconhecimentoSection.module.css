@@ -1,0 +1,37 @@
+.section {
+  background: var(--musgo);
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 60px);
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-nunito);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.body {
+  font-family: var(--font-nunito);
+  font-size: clamp(16px, 2.2vw, 18px);
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 20px;
+}
+
+.closing {
+  font-family: var(--font-nunito);
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.75;
+  color: var(--white);
+  font-weight: 500;
+  margin-top: 12px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
