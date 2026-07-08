@@ -14,17 +14,21 @@ export function DoacaoBanner() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease }}
       >
-        <h2 className={styles.title}>Faça parte dessa transformação</h2>
+        <h2 className={styles.title}>Apoie nossos projetos</h2>
         <p className={styles.lead}>
-          Cada doação, cada parceria, cada voluntário multiplica o impacto
-          desses projetos. Você pode fazer a diferença hoje.
+          Cada projeto da IBCM responde a uma necessidade real:{" "}
+          <strong>
+            comida, moradia, saúde, educação, trabalho, convivência, proteção e
+            direitos.{" "}
+          </strong>
+          Com a sua doação, esse cuidado continua chegando a quem mais precisa.
         </p>
         <div style={{ display: "flex", gap: 16 }}>
           <Link to="/doe-agora" className={styles.cta}>
             Doe agora
           </Link>
           <Link to="/doe-agora" className={styles.cta2}>
-            Seja voluntário
+            Seja um parceiro
           </Link>
         </div>
       </motion.div>

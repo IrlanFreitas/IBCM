@@ -2,18 +2,15 @@ import { Link } from "react-router";
 import styles from "./InfiniteCarousel.module.css";
 
 const companies = [
-  { name: "Vercel", abbr: "▲" },
-  { name: "Stripe", abbr: "S/" },
-  { name: "Figma", abbr: "◈" },
-  { name: "Linear", abbr: "⬡" },
-  { name: "Notion", abbr: "N°" },
-  { name: "Loom", abbr: "⊙" },
-  { name: "Framer", abbr: "⌘" },
-  { name: "Supabase", abbr: "⚡" },
-  { name: "Planetscale", abbr: "⊛" },
-  { name: "Railway", abbr: "◎" },
-  { name: "Resend", abbr: "✦" },
-  { name: "Clerk", abbr: "◐" },
+  { image: "/parceiros/Cencosud.png" },
+  { image: "/parceiros/CriancaEsperanca.jpg" },
+  { image: "/parceiros/FundacaoSalvadorArena.png" },
+  { image: "/parceiros/GSK.png" },
+  { image: "/parceiros/InstitutoLugardeFaz.jpg" },
+  { image: "/parceiros/SECSALVADOR.jpg" },
+  { image: "/parceiros/SJDH.jpg" },
+  { image: "/parceiros/SPMJ.png" },
+  { image: "/parceiros/UNESCO.webp" },
 ];
 
 // Duplicate for seamless infinite loop
@@ -38,8 +35,14 @@ export default function InfiniteCarousel() {
           <div className={styles.carouselTrack} aria-hidden="true">
             {row1.map((company, i) => (
               <div className={styles.logoCard} key={`r1-${i}`}>
-                <span className={styles.logoAbbr}>{company.abbr}</span>
-                <span className={styles.logoName}>{company.name}</span>
+                {/* <span className={styles.logoAbbr}>{company.abbr}</span>
+                <span className={styles.logoName}>{company.name}</span> */}
+                <img
+                  src={company.image}
+                  alt="parceiro"
+                  width={"100%"}
+                  height={"100%"}
+                />
               </div>
             ))}
           </div>

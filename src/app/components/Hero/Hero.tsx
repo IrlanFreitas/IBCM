@@ -233,9 +233,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.2 }}
         >
-          <span className={styles.titleHighlight}>Solidariedade sim.</span>
+          Solidariedade sim.
           <br />
-          Preconceito, não.
+          <span className={styles.titleHighlight}>Preconceito, não.</span>
         </motion.h1>
 
         <motion.p

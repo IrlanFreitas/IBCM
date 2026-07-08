@@ -12,8 +12,8 @@ export interface Projeto {
   image: string;
   badge?: string;
   descricao: string;
-  impacto: string;
-  bullets: string[];
+  impacto?: string;
+  bullets?: string[];
 }
 
 interface ProjetosListProps {
@@ -41,11 +41,14 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
                 className={styles.image}
               />
             </div>
-            <div className={styles.divider}/>
-            <div className={styles.impactBox}>
-              <span className={styles.impactLabel}>Impacto em números</span>
-              <p className={styles.impactText}>{projeto.impacto}</p>
-            </div>
+            <div className={styles.divider} />
+
+            {projeto.impacto && (
+              <div className={styles.impactBox}>
+                <span className={styles.impactLabel}>Impacto em números</span>
+                <p className={styles.impactText}>{projeto.impacto}</p>
+              </div>
+            )}
           </div>
 
           {/* Coluna direita: conteúdo */}
@@ -62,12 +65,12 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
 
             <p className={styles.desc}>{projeto.descricao}</p>
 
-            <div className={styles.ofertasHeader}>
+            {/* <div className={styles.ofertasHeader}>
               <span className={styles.ofertasLabel}>O que oferecemos</span>
               <div className={styles.ofertasLine} aria-hidden="true" />
-            </div>
+            </div> */}
 
-            <ul className={styles.bullets}>
+            {/* <ul className={styles.bullets}>
               {projeto.bullets.map((b) => (
                 <li key={b} className={styles.bullet}>
                   <span
@@ -78,7 +81,7 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
                   {b}
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </motion.article>
       ))}
