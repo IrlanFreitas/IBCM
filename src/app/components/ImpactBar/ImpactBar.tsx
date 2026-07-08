@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { motion } from "motion/react";
-import { CalendarDays, GraduationCap, Baby, Home, Sprout } from "lucide-react";
+import { CalendarDays, Baby, Home, Sprout } from "lucide-react";
 import { useOpcoes } from "../../../hooks/useOpcoes";
 import styles from "./ImpactBar.module.css";
 

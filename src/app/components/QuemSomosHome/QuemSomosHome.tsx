@@ -2,7 +2,6 @@ import { motion } from 'motion/react'
 import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from '../Eyebrow/Eyebrow'
-import { useOpcoes } from '../../../hooks/useOpcoes'
 import { useQuemSomosMidia } from '../../../hooks/useQuemSomosMidia'
 import styles from './QuemSomosHome.module.css'
 
