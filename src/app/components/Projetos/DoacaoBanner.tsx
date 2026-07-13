@@ -27,7 +27,7 @@ export function DoacaoBanner() {
           <Link to="/doe-agora" className={styles.cta}>
             Doe agora
           </Link>
-          <a href="https://wa.me/557134509759?text=Adoraria%20ser%20um%20parceiro!" target="_blank"  className={styles.cta2}>
+          <a href="https://wa.me/5571996588918?text=Adoraria%20ser%20um%20parceiro!" target="_blank"  className={styles.cta2}>
             Seja um parceiro
           </a>
         </div>
