@@ -49,9 +49,9 @@ export default function InfiniteCarousel() {
         </div>
       </div>
 
-      <Link to="/doe-agora" className={styles.cta}>
+      <a href="https://wa.me/557134509759?text=Adoraria%20ser%20um%20parceiro!" target="_blank" className={styles.cta}>
         Quero ser um parceiro
-      </Link>
+      </a>
     </section>
   );
 }

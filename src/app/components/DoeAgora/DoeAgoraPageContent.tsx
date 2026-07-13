@@ -190,7 +190,12 @@ export function DoeAgoraPageContent() {
             </div>
 
             {/* CTA */}
-            <button className={styles.ctaBtn}>
+            <button
+              className={styles.ctaBtn}
+              onClick={() =>
+                (window as any).doeAgoraInstituioBeneficenteConceioMacedoIbcm?.()
+              }
+            >
               <Heart size={16} fill="white" />
               Doe R$ {valorAtual}
               {mensal ? " / mês" : ""}
