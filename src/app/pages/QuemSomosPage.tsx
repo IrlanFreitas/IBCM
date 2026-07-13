@@ -1,4 +1,3 @@
-import { Users, Heart, Building2, Award } from 'lucide-react'
 import { BannerQuemSomos } from '../components/QuemSomos/BannerQuemSomos'
 import { FundadoraSection } from '../components/QuemSomos/FundadoraSection'
 import { TrajetoriaSection } from '../components/QuemSomos/TrajetoriaSection'
