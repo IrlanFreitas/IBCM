@@ -74,14 +74,17 @@ function wpToProjeto(wp: WPProjeto): Projeto {
   const media = wp._embedded?.["wp:featuredmedia"]?.[0];
   const image = wp.acf.imagemprincipal?.url ?? media?.source_url ?? "";
 
+  console.log(wp.acf)
+  console.log(media)
+
   return {
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
-    tagColor: wp.acf.tagcolor,
-    cor: wp.acf.tagcolor,
+    tagColor: wp.acf.tag_color,
+    cor: wp.acf.tag_color,
     image,
     badge: wp.acf.numeros || undefined,
-    descricao: wp.acf.descricaocompleta || wp.acf.descricaocurta,
+    descricao: wp.acf.descricao_completa || wp.acf.descricao_curta,
     impacto: wp.acf.impacto ?? "",
     bullets: (wp.acf.bullets ?? "").split("\n").map((line) => line.trim()),
   };

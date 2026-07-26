@@ -16,9 +16,9 @@ export interface WPProjeto {
   title: { rendered: string }
   acf: {
     tag: string
-    tagcolor: string
-    descricaocurta: string
-    descricaocompleta: string
+    tag_color: string
+    descricao_curta: string
+    descricao_completa: string
     impacto: string
     bullets: string
     imagemprincipal: { url: string; alt: string } | null

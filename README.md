@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="public/marca/ogImage.png" alt="IBCM — Instituto Beneficente Conceição Macedo" width="100%" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">IBCM — Instituto Beneficente Conceição Macedo</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  Site institucional da IBCM, ONG de Salvador (BA) dedicada a acolhimento, saúde, educação e defesa de direitos<br />
+  para pessoas que vivem com HIV/AIDS e grupos historicamente marginalizados. 38 anos cuidando de quem precisa.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Camada | Tecnologia |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build | Vite |
+| Roteamento | `react-router` v7 (Data Mode / `RouterProvider`) |
+| Estilização | Tailwind CSS v4 |
+| Animações | `motion` |
+| Ícones | `lucide-react` |
+| Data fetching | `@tanstack/react-query` |
+| CMS | WordPress headless (REST API) |
 
-## Expanding the ESLint configuration
+## Estrutura do projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+/src
+  /app
+    App.tsx              # RouterProvider
+    routes.tsx             # definição de rotas
+    /components            # componentes de UI por seção
+    /pages                 # páginas roteadas
+    /layouts               # RootLayout
+    /data
+  /hooks                  # hooks de integração com o CMS (WordPress)
+  /services               # chamadas HTTP à API WordPress
+  /styles                 # theme.css, fonts.css
+  /types                  # tipos do CMS
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Rotas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+/                 Home
+/quem-somos       Quem Somos (timeline institucional)
+/projetos         Projetos e Causas
+/causas           Causas
+/doe-agora        Doe Agora
+/noticias         Notícias
+/noticias/:slug   Notícia (detalhe)
+/transparencia    Transparência
+```
+
+## Como rodar
+
+```bash
+npm install
+npm run dev
+```
+
+Outros scripts:
+
+```bash
+npm run build      # build de produção (tsc -b && vite build)
+npm run preview    # preview local do build
+npm run lint        # eslint
+```
+
+## Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz com:
+
+```
+VITE_WP_API_URL=
+```
+
+URL base da API REST do WordPress usada como CMS headless do site.
+
+## Deploy
+
+O site é publicado na Vercel. Detalhes de infraestrutura/VPS estão documentados internamente (não versionados neste repositório).
+
+## Licença
+
+Uso interno — IBCM.

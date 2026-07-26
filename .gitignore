@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Docs / agent config (internal, not versioned)
+docs
+.claude
+CLAUDE.md

@@ -65,13 +65,14 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
 
             <p className={styles.desc}>{projeto.descricao}</p>
 
-            {/* <div className={styles.ofertasHeader}>
+            {projeto?.bullets && (<>
+            <div className={styles.ofertasHeader}>
               <span className={styles.ofertasLabel}>O que oferecemos</span>
               <div className={styles.ofertasLine} aria-hidden="true" />
-            </div> */}
+            </div>
 
-            {/* <ul className={styles.bullets}>
-              {projeto.bullets.map((b) => (
+            <ul className={styles.bullets}>
+              {projeto?.bullets.map((b) => (
                 <li key={b} className={styles.bullet}>
                   <span
                     className={styles.bulletDot}
@@ -81,8 +82,8 @@ export function ProjetosList({ projetos }: ProjetosListProps) {
                   {b}
                 </li>
               ))}
-            </ul> */}
-          </div>
+            </ul></>)}
+          </div> 
         </motion.article>
       ))}
     </>
