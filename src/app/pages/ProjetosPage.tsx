@@ -80,11 +80,11 @@ function wpToProjeto(wp: WPProjeto): Projeto {
   return {
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
-    tagColor: wp.acf.tag_color,
-    cor: wp.acf.tag_color,
+    tagColor: wp.acf.tag_color || wp.acf.tagcolor || "#000",
+    cor: wp.acf.tag_color || wp.acf.tagcolor || "#000",
     image,
     badge: wp.acf.numeros || undefined,
-    descricao: wp.acf.descricao_completa || wp.acf.descricao_curta,
+    descricao: wp.acf.descricao_completa ||  wp.acf.descricaocompleta || "",
     impacto: wp.acf.impacto ?? "",
     bullets: (wp.acf.bullets ?? "").split("\n").map((line) => line.trim()),
   };

@@ -73,14 +73,14 @@ const GRADIENT_MAP: Record<string, string> = {
 function wpToCard(wp: WPProjeto): CardData {
   const media = wp._embedded?.['wp:featuredmedia']?.[0]
   const imagemUrl = wp.acf.imagemprincipal?.url ?? media?.source_url ?? ''
-  const tagColor = wp.acf.tag_color
+  const tagColor = wp.acf.tag_color || "#000"
   return {
     id: wp.id,
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
     tagColor,
-    gradient: GRADIENT_MAP[tagColor] ?? `linear-gradient(90deg, ${tagColor} 0%, transparent 100%)`,
-    descricao: wp.acf.descricao_curta,
+    gradient: GRADIENT_MAP[tagColor ] ?? `linear-gradient(90deg, ${tagColor} 0%, transparent 100%)`,
+    descricao: wp.acf.descricao_curta || wp.acf.descricaocurta || "",
     badge: wp.acf.numeros || null,
     image: imagemUrl,
   }
