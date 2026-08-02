@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Heart,
   Shield,
@@ -15,18 +14,30 @@ import styles from "./DoeAgoraPageContent.module.css";
 const STATIC_VALORES = [
   {
     valor: 25,
-    impacto: ["5 refeições por semana para uma criança", "Suporte nutricional em tratamento HIV", "Kit higiene mensal básico"],
-    link: "https://doa.re/3Bzm"
+    impacto: [
+      "5 refeições por semana para uma criança",
+      "Suporte nutricional em tratamento HIV",
+      "Kit higiene mensal básico",
+    ],
+    link: "https://doa.re/3Bzm",
   },
   {
     valor: 50,
-    impacto: ["Contribui com o aluguel de uma casa de apoio", "Garante 2 crianças na creche por 1 semana", "Material didático para turma"],
-    link: "https://doa.re/4RoI"
+    impacto: [
+      "Contribui com o aluguel de uma casa de apoio",
+      "Garante 2 crianças na creche por 1 semana",
+      "Material didático para turma",
+    ],
+    link: "https://doa.re/4RoI",
   },
   {
     valor: 100,
-    impacto: ["Cobre tratamento ARV de 1 paciente", "1 semana de atendimento integral a uma família", "Apoio psicológico mensal"],
-    link: "https://doa.re/LXFK"
+    impacto: [
+      "Cobre tratamento ARV de 1 paciente",
+      "1 semana de atendimento integral a uma família",
+      "Apoio psicológico mensal",
+    ],
+    link: "https://doa.re/LXFK",
   },
   {
     valor: 200,
@@ -35,7 +46,7 @@ const STATIC_VALORES = [
       "Materiais pedagógicos completos",
       "Cobre consultas médicas mensais",
     ],
-    link: "https://doa.re/kaVW"
+    link: "https://doa.re/kaVW",
   },
 ];
 
@@ -47,45 +58,37 @@ const STATIC_STATS = [
 ];
 
 export function DoeAgoraPageContent() {
-
   return (
     <section className={styles.section}>
-      {/* ── QR Code Pix ── */}
 
       <div className={styles.layout}>
         {/* ── Coluna do formulário ── */}
         <div className={styles.formCol}>
           <div className={styles.formCard}>
 
-            {/* Info box mensal */}
-
-              <div className={styles.infoBox}>
-                <Heart
-                  size={18}
-                  fill="var(--musgo)"
-                  color="var(--musgo)"
-                  style={{ flexShrink: 0, marginTop: 2 }}
-                />
-                <div>
-                  <span className={styles.infoTitle}>
-                    Doações mensais garantem nossa continuidade.{" "}
-                  </span>
-                  <span className={styles.infoText}>
-                    Com previsibilidade financeira, mantemos e ampliamos os
-                    programas ao longo do ano.
-                  </span>
-                </div>
+            <div className={styles.infoBox}>
+              <Heart
+                size={18}
+                fill="var(--musgo)"
+                color="var(--musgo)"
+                style={{ flexShrink: 0, marginTop: 2 }}
+              />
+              <div>
+                <span className={styles.infoTitle}>
+                  Doações mensais garantem nossa continuidade.{" "}
+                </span>
+                <span className={styles.infoText}>
+                  Com previsibilidade financeira, mantemos e ampliamos os
+                  programas ao longo do ano.
+                </span>
               </div>
-            
+            </div>
 
             {/* Cards de valor */}
             <div className={styles.valoresGrid}>
               {STATIC_VALORES.map((v) => {
-
                 return (
-                  <a href={v.link}
-                  className={styles.valorCard}
-                  >
+                  <a href={v.link} className={styles.valorCard}>
                     <span
                       className={styles.valorCardTitle}
                       // style={{ color: ativo ? "var(--white)" : "var(--ink)" }}
@@ -93,9 +96,7 @@ export function DoeAgoraPageContent() {
                       R$ {v.valor}
                     </span>
 
-                    <div
-                      className={styles.valorCardImpacto}
-                    >
+                    <div className={styles.valorCardImpacto}>
                       <p className={styles.impactoLabel}>
                         Esse valor financia:
                       </p>
@@ -116,7 +117,6 @@ export function DoeAgoraPageContent() {
                 );
               })}
             </div>
-
 
             {/* CTA */}
             <a
@@ -203,9 +203,7 @@ export function DoeAgoraPageContent() {
       {/* Divisor */}
       <div className={styles.pixDivider}>
         <div className={styles.pixDividerLine} />
-        <span className={styles.pixDividerText}>
-          ou doe diretamente no pix
-        </span>
+        <span className={styles.pixDividerText}>ou doe diretamente no pix</span>
         <div className={styles.pixDividerLine} />
       </div>
       <div className={styles.pixWrapper}>
