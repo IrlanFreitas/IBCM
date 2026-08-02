@@ -10,21 +10,23 @@ import {
   Minus,
 } from "lucide-react";
 import { ImageWithFallback } from "../ImageWithFallback/ImageWithFallback";
-import { useOpcoes } from "../../../hooks/useOpcoes";
 import styles from "./DoeAgoraPageContent.module.css";
 
 const STATIC_VALORES = [
   {
     valor: 25,
-    impacto: ["Uma refeição para uma criança"],
+    impacto: ["5 refeições por semana para uma criança", "Suporte nutricional em tratamento HIV", "Kit higiene mensal básico"],
+    link: "https://doa.re/3Bzm"
   },
   {
     valor: 50,
-    impacto: ["Fraldas descartáveis para quem precisa"],
+    impacto: ["Contribui com o aluguel de uma casa de apoio", "Garante 2 crianças na creche por 1 semana", "Material didático para turma"],
+    link: "https://doa.re/4RoI"
   },
   {
     valor: 100,
-    impacto: ["Uma cesta básica para uma família"],
+    impacto: ["Cobre tratamento ARV de 1 paciente", "1 semana de atendimento integral a uma família", "Apoio psicológico mensal"],
+    link: "https://doa.re/LXFK"
   },
   {
     valor: 200,
@@ -33,6 +35,7 @@ const STATIC_VALORES = [
       "Materiais pedagógicos completos",
       "Cobre consultas médicas mensais",
     ],
+    link: "https://doa.re/kaVW"
   },
 ];
 
@@ -44,20 +47,6 @@ const STATIC_STATS = [
 ];
 
 export function DoeAgoraPageContent() {
-  const { data: opcoes } = useOpcoes();
-  const [mensal, setMensal] = useState(true);
-  const [valorSelecionado, setValorSelecionado] = useState(50);
-  const [valorCustom, setValorCustom] = useState("");
-
-  const valores = opcoes?.valores_doacao?.length
-    ? opcoes.valores_doacao.map((v) => ({
-        valor: v.valor,
-        impacto: v.impactos.map((i) => i.texto),
-      }))
-    : STATIC_VALORES;
-
-  const valorAtual = valorSelecionado || Number(valorCustom) || 50;
-  const itemSelecionado = valores.find((v) => v.valor === valorSelecionado);
 
   return (
     <section className={styles.section}>
@@ -67,34 +56,9 @@ export function DoeAgoraPageContent() {
         {/* ── Coluna do formulário ── */}
         <div className={styles.formCol}>
           <div className={styles.formCard}>
-            {/* Toggle */}
-            <div className={styles.toggle}>
-              {[
-                { label: "Doação mensal", value: true },
-                { label: "Doação única", value: false },
-              ].map((opt) => (
-                <button
-                  key={opt.label}
-                  onClick={() => setMensal(opt.value)}
-                  className={styles.toggleBtn}
-                  style={{
-                    background:
-                      mensal === opt.value ? "var(--white)" : "transparent",
-                    color:
-                      mensal === opt.value ? "var(--ink)" : "var(--ink-40)",
-                    boxShadow:
-                      mensal === opt.value
-                        ? "0 1px 6px rgba(28,25,23,0.08)"
-                        : "none",
-                  }}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
 
             {/* Info box mensal */}
-            {mensal && (
+
               <div className={styles.infoBox}>
                 <Heart
                   size={18}
@@ -112,94 +76,57 @@ export function DoeAgoraPageContent() {
                   </span>
                 </div>
               </div>
-            )}
+            
 
             {/* Cards de valor */}
             <div className={styles.valoresGrid}>
-              {valores.map((v) => {
-                const ativo = valorSelecionado === v.valor && !valorCustom;
+              {STATIC_VALORES.map((v) => {
+
                 return (
-                  <button
-                    key={v.valor}
-                    onClick={() => {
-                      setValorSelecionado(v.valor);
-                      setValorCustom("");
-                    }}
-                    className={styles.valorBtn}
-                    style={{
-                      color: ativo ? "var(--terra)" : "var(--ink)",
-                      background: ativo ? "var(--terra-light)" : "var(--white)",
-                      border: ativo
-                        ? "1.5px solid var(--terra)"
-                        : "1.5px solid var(--ink-12)",
-                      boxShadow: ativo
-                        ? "0 0 0 3px rgba(193,68,14,0.10)"
-                        : "none",
-                    }}
+                  <a href={v.link}
+                  className={styles.valorCard}
                   >
-                    R$ {v.valor}
-                    {mensal && <span className={styles.valorSuffix}>/mês</span>}
-                  </button>
+                    <span
+                      className={styles.valorCardTitle}
+                      // style={{ color: ativo ? "var(--white)" : "var(--ink)" }}
+                    >
+                      R$ {v.valor}
+                    </span>
+
+                    <div
+                      className={styles.valorCardImpacto}
+                    >
+                      <p className={styles.impactoLabel}>
+                        Esse valor financia:
+                      </p>
+                      <ul className={styles.impactoList}>
+                        {v.impacto.map((item) => (
+                          <li key={item} className={styles.impactoItem}>
+                            <Check
+                              size={14}
+                              color="var(--terra)"
+                              style={{ flexShrink: 0, marginTop: 1 }}
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </a>
                 );
               })}
             </div>
 
-            {/* Impacto */}
-            {itemSelecionado && (
-              <div className={styles.impacto}>
-                <p className={styles.impactoLabel}>
-                  Com R$ {itemSelecionado.valor}/{mensal ? "mês" : "vez"} você
-                  financia:
-                </p>
-                <ul className={styles.impactoList}>
-                  {itemSelecionado.impacto.map((item) => (
-                    <li key={item} className={styles.impactoItem}>
-                      <Check
-                        size={14}
-                        color="var(--terra)"
-                        style={{ flexShrink: 0, marginTop: 1 }}
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Valor customizado */}
-            <p className={styles.outroValorLabel}>
-              Ou informe outro valor (R$)
-            </p>
-            <div
-              className={styles.customValueWrapper}
-              style={{
-                borderColor: valorCustom ? "var(--terra)" : "transparent",
-              }}
-            >
-              <span className={styles.customValuePrefix}>R$</span>
-              <input
-                type="number"
-                placeholder="Ex: 75"
-                value={valorCustom}
-                onChange={(e) => {
-                  setValorCustom(e.target.value);
-                  setValorSelecionado(0);
-                }}
-                className={styles.customValueInput}
-              />
-            </div>
 
             {/* CTA */}
-            <button
+            <a
               className={styles.ctaBtn}
-              onClick={() =>
-                (window as any).doeAgoraInstituioBeneficenteConceioMacedoIbcm?.()
-              }
+              href="https://doa.re/dEy9"
+              target="_blank"
             >
               <Heart size={16} fill="white" />
-              Doe R$ {valorAtual}
-              {mensal ? " / mês" : ""}
-            </button>
+              Doe outro valor
+            </a>
 
             {/* Badges */}
             <div className={styles.badgesRow}>

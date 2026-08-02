@@ -74,9 +74,6 @@ function wpToProjeto(wp: WPProjeto): Projeto {
   const media = wp._embedded?.["wp:featuredmedia"]?.[0];
   const image = wp.acf.imagemprincipal?.url ?? media?.source_url ?? "";
 
-  console.log(wp.acf)
-  console.log(media)
-
   return {
     titulo: wp.title.rendered,
     tag: wp.acf.tag,
