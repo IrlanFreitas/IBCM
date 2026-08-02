@@ -81,9 +81,12 @@ export interface WPRelatorio {
   title: { rendered: string }
   acf: {
     ano: number
-    arquivo_pdf: { url: string } | null
+    arquivo_pdf: { url: string; filename: string } | null
     tamanho: string
     tipo: 'anual' | 'auditoria' | 'financeiro'
+  }
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string; alt_text: string }>
   }
 }
 

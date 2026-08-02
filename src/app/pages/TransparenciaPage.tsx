@@ -1,6 +1,7 @@
 import { PageBanner } from '../components/PageBanner/PageBanner'
-import { CertificacoesSection } from '../components/Transparencia/CertificacoesSection'
-import { DocumentacaoSection } from '../components/Transparencia/DocumentacaoSection'
+// import { CertificacoesSection } from '../components/Transparencia/CertificacoesSection'
+// import { DocumentacaoSection } from '../components/Transparencia/DocumentacaoSection'
+import { RelatoriosSection } from '../components/Transparencia/RelatoriosSection'
 import { ContatoBanner } from '../components/Transparencia/ContatoBanner'
 
 export function TransparenciaPage() {
@@ -22,8 +23,9 @@ export function TransparenciaPage() {
         ariaLabel="Título da página Transparência"
       />
 
-      <CertificacoesSection />
-      <DocumentacaoSection />
+      {/* <CertificacoesSection />
+      <DocumentacaoSection /> */}
+      <RelatoriosSection />
       <ContatoBanner />
     </>
   )

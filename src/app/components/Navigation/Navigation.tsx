@@ -4,6 +4,7 @@ import { Heart, Menu, X } from 'lucide-react'
 import styles from './Navigation.module.css'
 
 const links = [
+  { label: 'Início', to: '/' },
   { label: 'Quem somos', to: '/quem-somos' },
   { label: 'Projetos', to: '/projetos' },
   { label: 'Causas', to: '/causas' },
@@ -42,10 +43,10 @@ export function Navigation() {
           </Link>
 
           {/* Logo mobile */}
-          <span className={styles.logoMobile}>
+          <Link to="/" className={styles.logoMobile}>
             <h1 className={styles.logoMobileTitle}>IBCM</h1>
             <p className={styles.logoMobileSubtitle}>Instituto Beneficente Conceição Macedo</p>
-          </span>
+          </Link>
 
           {/* Links desktop */}
           <div className={styles.linksDesktop}>
