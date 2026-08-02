@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import { Heart, Shield, Lock, Check } from "lucide-react";
 
