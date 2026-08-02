@@ -89,6 +89,7 @@ export function DoeAgora() {
                 className={styles.valorCard}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, ease, delay: i * 0.1 }}
               >
