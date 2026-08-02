@@ -82,34 +82,35 @@ export function DoeAgora() {
         >
           {/* Cards de valor */}
           <div className={styles.valoresGrid}>
-            {STATIC_VALORES.map((v) => {
-              return (
-                <a href={v.link} className={styles.valorCard}>
-                  <span
-                    className={styles.valorCardTitle}
-                    // style={{ color: ativo ? "var(--white)" : "var(--ink)" }}
-                  >
-                    R$ {v.valor}
-                  </span>
+            {STATIC_VALORES.map((v, i) => (
+              <motion.a
+                key={v.valor}
+                href={v.link}
+                className={styles.valorCard}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, ease, delay: i * 0.1 }}
+              >
+                <span className={styles.valorCardTitle}>R$ {v.valor}</span>
 
-                  <div className={styles.valorCardImpacto}>
-                    <p className={styles.impactoLabel}>Esse valor financia:</p>
-                    <ul className={styles.impactoList}>
-                      {v.impacto.map((item) => (
-                        <li key={item} className={styles.impactoItem}>
-                          <Check
-                            size={14}
-                            color="var(--terra)"
-                            style={{ flexShrink: 0, marginTop: 1 }}
-                          />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </a>
-              );
-            })}
+                <div className={styles.valorCardImpacto}>
+                  <p className={styles.impactoLabel}>Esse valor financia:</p>
+                  <ul className={styles.impactoList}>
+                    {v.impacto.map((item) => (
+                      <li key={item} className={styles.impactoItem}>
+                        <Check
+                          size={14}
+                          color="var(--terra)"
+                          style={{ flexShrink: 0, marginTop: 1 }}
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.a>
+            ))}
           </div>
 
           {/* CTA */}

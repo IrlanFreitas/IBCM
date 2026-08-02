@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import {
   Heart,
   Shield,
@@ -10,6 +11,8 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "../ImageWithFallback/ImageWithFallback";
 import styles from "./DoeAgoraPageContent.module.css";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const STATIC_VALORES = [
   {
@@ -64,7 +67,13 @@ export function DoeAgoraPageContent() {
       <div className={styles.layout}>
         {/* ── Coluna do formulário ── */}
         <div className={styles.formCol}>
-          <div className={styles.formCard}>
+          <motion.div
+            className={styles.formCard}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease }}
+          >
 
             <div className={styles.infoBox}>
               <Heart
@@ -86,36 +95,37 @@ export function DoeAgoraPageContent() {
 
             {/* Cards de valor */}
             <div className={styles.valoresGrid}>
-              {STATIC_VALORES.map((v) => {
-                return (
-                  <a href={v.link} className={styles.valorCard}>
-                    <span
-                      className={styles.valorCardTitle}
-                      // style={{ color: ativo ? "var(--white)" : "var(--ink)" }}
-                    >
-                      R$ {v.valor}
-                    </span>
+              {STATIC_VALORES.map((v, i) => (
+                <motion.a
+                  key={v.valor}
+                  href={v.link}
+                  className={styles.valorCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.6, ease, delay: i * 0.1 }}
+                >
+                  <span className={styles.valorCardTitle}>R$ {v.valor}</span>
 
-                    <div className={styles.valorCardImpacto}>
-                      <p className={styles.impactoLabel}>
-                        Esse valor financia:
-                      </p>
-                      <ul className={styles.impactoList}>
-                        {v.impacto.map((item) => (
-                          <li key={item} className={styles.impactoItem}>
-                            <Check
-                              size={14}
-                              color="var(--terra)"
-                              style={{ flexShrink: 0, marginTop: 1 }}
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </a>
-                );
-              })}
+                  <div className={styles.valorCardImpacto}>
+                    <p className={styles.impactoLabel}>
+                      Esse valor financia:
+                    </p>
+                    <ul className={styles.impactoList}>
+                      {v.impacto.map((item) => (
+                        <li key={item} className={styles.impactoItem}>
+                          <Check
+                            size={14}
+                            color="var(--terra)"
+                            style={{ flexShrink: 0, marginTop: 1 }}
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.a>
+              ))}
             </div>
 
             {/* CTA */}
@@ -140,13 +150,19 @@ export function DoeAgoraPageContent() {
               </div>
               <span className={styles.badgeText}>Pix · Cartão · Boleto</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* ── Sidebar ── */}
         <div className={styles.sidebar}>
           {/* Card stats */}
-          <div className={styles.sideCard}>
+          <motion.div
+            className={styles.sideCard}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease, delay: 0.15 }}
+          >
             <div className={styles.sideCardHeader}>
               <span className={styles.sideCardTitle}>
                 Com você, salvamos vidas!
@@ -175,10 +191,16 @@ export function DoeAgoraPageContent() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* Card IBCM+ */}
-          <div className={styles.sideCard}>
+          <motion.div
+            className={styles.sideCard}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease, delay: 0.3 }}
+          >
             <div className={styles.sideCardHeader}>
               <span className={styles.sideCardTitle}>IBCM+</span>
               <button
@@ -197,7 +219,7 @@ export function DoeAgoraPageContent() {
               />
               <span className={styles.ibcmBadge}>Mais carinho</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       {/* Divisor */}
@@ -207,7 +229,13 @@ export function DoeAgoraPageContent() {
         <div className={styles.pixDividerLine} />
       </div>
       <div className={styles.pixWrapper}>
-        <div className={styles.pixCard}>
+        <motion.div
+          className={styles.pixCard}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease }}
+        >
           <div className={styles.pixInfo}>
             <span className={styles.pixEyebrow}>Pix · doação direta</span>
             <p className={styles.pixTitle}>Doe agora pelo Pix</p>
@@ -245,7 +273,7 @@ export function DoeAgoraPageContent() {
               Aponte a câmera do celular
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
