@@ -4,61 +4,13 @@ import {
   Shield,
   Lock,
   Check,
-  Activity,
-  Home,
-  Users,
   Minus,
 } from "lucide-react";
 import { ImageWithFallback } from "../ImageWithFallback/ImageWithFallback";
 import styles from "./DoeAgoraPageContent.module.css";
+import { STATIC_STATS, STATIC_VALORES } from "./DoeAgora.utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-const STATIC_VALORES = [
-  {
-    valor: 25,
-    impacto: [
-      "5 refeições por semana para uma criança",
-      "Suporte nutricional em tratamento HIV",
-      "Kit higiene mensal básico",
-    ],
-    link: "https://doa.re/3Bzm",
-  },
-  {
-    valor: 50,
-    impacto: [
-      "Contribui com o aluguel de uma casa de apoio",
-      "Garante 2 crianças na creche por 1 semana",
-      "Material didático para turma",
-    ],
-    link: "https://doa.re/4RoI",
-  },
-  {
-    valor: 100,
-    impacto: [
-      "Cobre tratamento ARV de 1 paciente",
-      "1 semana de atendimento integral a uma família",
-      "Apoio psicológico mensal",
-    ],
-    link: "https://doa.re/LXFK",
-  },
-  {
-    valor: 200,
-    impacto: [
-      "1 mês de alimentação para 2 crianças",
-      "Materiais pedagógicos completos",
-      "Cobre consultas médicas mensais",
-    ],
-    link: "https://doa.re/kaVW",
-  },
-];
-
-const STATIC_STATS = [
-  { icon: Activity, numero: "12.450", label: "Testes de HIV/ST" },
-  { icon: Heart, numero: "2.800", label: "Atendimentos Psicológicos" },
-  { icon: Home, numero: "450", label: "Famílias Amparadas" },
-  { icon: Users, numero: "800", label: "Ações na Ronda Noturna" },
-];
 
 export function DoeAgoraPageContent() {
   return (

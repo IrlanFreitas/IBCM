@@ -2,47 +2,11 @@ import { motion } from "motion/react";
 import { Heart, Shield, Lock, Check } from "lucide-react";
 
 import styles from "./DoeAgora.module.css";
+import { STATIC_VALORES } from "./DoeAgora.utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const STATIC_VALORES = [
-  {
-    valor: 25,
-    impacto: [
-      "5 refeições por semana para uma criança",
-      "Suporte nutricional em tratamento HIV",
-      "Kit higiene mensal básico",
-    ],
-    link: "https://doa.re/3Bzm",
-  },
-  {
-    valor: 50,
-    impacto: [
-      "Contribui com o aluguel de uma casa de apoio",
-      "Garante 2 crianças na creche por 1 semana",
-      "Material didático para turma",
-    ],
-    link: "https://doa.re/4RoI",
-  },
-  {
-    valor: 100,
-    impacto: [
-      "Cobre tratamento ARV de 1 paciente",
-      "1 semana de atendimento integral a uma família",
-      "Apoio psicológico mensal",
-    ],
-    link: "https://doa.re/LXFK",
-  },
-  {
-    valor: 200,
-    impacto: [
-      "1 mês de alimentação para 2 crianças",
-      "Materiais pedagógicos completos",
-      "Cobre consultas médicas mensais",
-    ],
-    link: "https://doa.re/kaVW",
-  },
-];
+
 
 export function DoeAgora() {
   return (
